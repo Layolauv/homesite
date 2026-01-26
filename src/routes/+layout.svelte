@@ -1,6 +1,6 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
-	import logo from '$lib/assets/logo.png';
+	import logoPry from '$lib/assets/logoPrimary.png';
 	import sunDark from '$lib/assets/sun-dark.png';
 	import letsTalk from '$lib/assets/lets-talk.png';
 	import sunLight from '$lib/assets/sun-light.png';
@@ -26,13 +26,14 @@
 
 	let footerLinks = {
 		'Email': 'mailto:iam@layolauv.me',
-		'Linkedin': 'https://www.linkedin.com/in/layo-folaranmi/',
+		'LinkedIn': 'https://www.linkedin.com/in/layo-folaranmi/',
 		'Github': 'https://github.com/Layolauv'
 	};
 
 	let content = {
-		footerText: 'Let\'s build something impactful together.',
-		rightsReserved: `${currentYear} &copy; All Rights Reserved`
+		footerTextA: 'Let\'s build something',
+		footerTextB: 'impactful together.',
+		rightsReserved: `${currentYear} © All Rights Reserved`
 	};
 
 </script>
@@ -43,7 +44,7 @@
 
 <section class="navigation__wrapper" class:dark={darkMode}>
 	<div class="navigation__block">
-		<img src={logo} alt="site logo" class="navigation__logo" />
+		<img src={logoPry} alt="site logo" class="navigation__logo" />
 		<nav class="navigation__links">
 			{#each Object.entries(links) as [ title, url ]}
 				<a href={url} class="navigation__link" class:active={isActiveUrl(url)}>{title}</a>
@@ -61,7 +62,7 @@
 </section>
 
 <section class="footer__wrapper" class:dark={darkMode}>
-	<p class="footer__text">{content.footerText}</p>
+	<p class="footer__text">{content.footerTextA} <br /> {content.footerTextB}</p>
 	<a class="footer__cta" href={contactUrl}>
 		<img src={letsTalk} alt="call to action">
 	</a>
@@ -86,52 +87,88 @@
 
   .navigation {
     &__wrapper {
-      @apply flex px-[10vw] max-lg:px-[6vw];
+      @apply flex max-w-[100vw] overflow-hidden;
     }
 
     &__block {
-      @apply border-solid w-full border-x-1 border-y-0 px-[5%] flex;
+      @apply border-solid border-x-1 grow-3 border-y-0 flex ml-[10%];
       @apply dark:border-dark-200;
+    }
+    &__logo {
+      @apply w-[15%] min-w-[100px] h-[fit-content]  m-auto;
     }
 
     &__links {
-      @apply flex ml-[6vw] border-solid mt-5 border-1 rounded-t-lg;
-      @apply dark:border-dark-200;
+      @apply flex mt-5 border-none mx-auto grow-3 max-w-[40%] justify-start;
     }
 
     &__link {
-      @apply py-[5vh] px-[3vw] capitalize w-[max-content] no-underline text-light-400 font-light text-[18px];
+      @apply capitalize px-[5%] py-[8%] min-w-[15%] font-light tracking-wider text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;;
+      @apply dark:border-dark-350;
 
       &.active {
         @apply text-light-500;
         @apply dark:bg-dark-350;
       }
 
-      &:not(:first-child):not(:last-child) {
-        @apply border-solid border-x-1 border-y-0;
-        @apply dark:border-dark-350;
+      &:first-child{
+				@apply rounded-tl-lg;
+			}
+
+			&:last-child {
+        @apply rounded-tr-lg;
       }
 
       &--contact {
-        @apply max-w-md p-[1rem] ml-[5vw] h-[fit-content] my-auto rounded-md border-solid ;
+        @apply max-w-sm p-[1rem] w-[fit-content] m-auto rounded-md border-solid ;
         @apply dark:text-light-500 dark:bg-secondary-500;
       }
     }
-
-
-    &__logo {
-      @apply max-w-[10vw] w-[fit-content] h-[fit-content] my-auto;
-    }
-
     &__mode {
-      @apply m-8 bg-transparent border-none cursor-pointer;
+      @apply flex items-center justify-center bg-transparent border-none cursor-pointer w-[10%] min-w-[100px];
+      img {
+				@apply block m-auto w-[fit-content];
+        @apply animate-spin [animation-duration:10s];
+      }
     }
 
   }
 
   .footer {
 		&__wrapper {
-			@apply dark:bg-dark-500;
+			@apply pt-[5%] pb-[3%] ;
+			@apply dark:bg-dark-500 dark:text-light-550;
+
+			* {
+        font-family: 'Plus Jakarta Sans', SansSerif, sans-serif;
+      }
+		}
+
+		&__text {
+			@apply text-center font-medium text-[5.5rem] mx-auto my-[2%];
+		}
+		&__rights {
+			@apply text-sm font-normal mt-0 tracking-wider;
+    }
+
+		&__cta {
+			@apply mx-auto max-w-[20vw] block w-[fit-content] h-[fit-content];
+			@apply animate-spin [animation-duration:10s];
+		}
+
+		&__link {
+			@apply dark:text-light-550 mx-[10px] font-light;
+
+			&:hover {
+				@apply no-underline;
+			}
+
+			&:last-child{
+				@apply mr-[0];
+			}
+		}
+		&__block{
+			@apply flex justify-between mx-[5%];
 		}
   }
 </style>
