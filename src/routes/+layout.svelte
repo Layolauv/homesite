@@ -1,6 +1,11 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
-	import logoPry from '$lib/assets/logoPrimary.png';
+	import dropdown from '$lib/assets/dropdown.svg';
+	import dropdownLight from '$lib/assets/dropdownLight.svg';
+	import sunlight from '$lib/assets/sunlight.svg';
+	import sunlightLight from '$lib/assets/sunlightLight.svg';
+	import logoPry from '$lib/assets/logoPry.png';
+	import logoMobilePry from '$lib/assets/logoMobilePry.png';
 	import sunDark from '$lib/assets/sun-dark.png';
 	import letsTalk from '$lib/assets/lets-talk.png';
 	import sunLight from '$lib/assets/sun-light.png';
@@ -9,20 +14,31 @@
 	let { children } = $props();
 	let pathName = $state('');
 	let darkMode = $state(true);
-	let isActiveUrl = (url: string) => pathName === url;
+	let expanded = $state(false);
+	const isActiveUrl = (url: string) => pathName === url;
+	const toggleExpansion = () => expanded = !expanded;
+	const toggleDarkMode = () => darkMode = !darkMode;
+
 	afterNavigate(() => {
 		pathName = window.location.pathname;
+		expanded = false;
 	});
 
 	const currentYear = (new Date()).getFullYear();
 	let links = {
 		'home': '/',
-		'About me': '/about',
+		'About Me': '/about',
 		'Musings': '/musings',
 		'Projects': '/projects'
 	};
+	let mobileLinks = {
+		'About Me': '/about',
+		'Musings': '/musings',
+		'Projects': '/projects',
+		'Contact Me': '/contact'
+	};
 
-	let contactUrl = "/contact"
+	let contactUrl = '/contact';
 
 	let footerLinks = {
 		'Email': 'mailto:iam@layolauv.me',
@@ -43,18 +59,38 @@
 </svelte:head>
 
 <section class="navigation__wrapper" class:dark={darkMode}>
-	<div class="navigation__block">
+	<div class="navigation__block navigation__block--desktop">
 		<img src={logoPry} alt="site logo" class="navigation__logo" />
 		<nav class="navigation__links">
 			{#each Object.entries(links) as [ title, url ]}
 				<a href={url} class="navigation__link" class:active={isActiveUrl(url)}>{title}</a>
 			{/each}
 		</nav>
-		<button class="navigation__link navigation__link--contact">Contact Me</button>
+		<a class="navigation__link navigation__link--contact" href="/contact">Contact Me</a>
+		<button class="navigation__mode" aria-label="mode">
+			<img src={darkMode ? sunDark : sunLight} alt="toggle light or dark mode" />
+		</button>
 	</div>
-	<a class="navigation__mode" aria-label="mode" href={contactUrl}>
-		<img src={darkMode ? sunDark : sunLight} alt="toggle light or dark mode" />
-	</a>
+
+	<div class="navigation__block navigation__block--mobile">
+		<div class="navigation__block-bar">
+			<img src={logoMobilePry} alt="site logo" class="navigation__logo" />
+
+			<button class="navigation__action navigation__action--dropdown" onclick={toggleExpansion}>
+				<img src={darkMode ? dropdown : dropdownLight} alt="show mobile dropdown" />
+			</button>
+			<button class="navigation__action navigation__action--mode" onclick={toggleDarkMode}>
+				<img src={darkMode ? sunlight : sunlightLight} alt="toggle light or dark mode" />
+			</button>
+		</div>
+
+		<nav class="navigation__links" class:show={expanded}>
+			{#each Object.entries(mobileLinks) as [ title, url ]}
+				<a href={url} class="navigation__link" class:active={isActiveUrl(url)}>{title}</a>
+			{/each}
+		</nav>
+	</div>
+
 </section>
 
 <section class="body" class:dark={darkMode}>
@@ -87,47 +123,126 @@
 
   .navigation {
     &__wrapper {
-      @apply flex max-w-[100vw] overflow-hidden;
+      @apply flex max-w-[100vw] overflow-hidden border-solid border-0 border-b-1;
+      @apply dark:border-dark-200;
+    }
+
+    &__action {
+      @apply bg-transparent border-none cursor-pointer px-3;
     }
 
     &__block {
-      @apply border-solid border-x-1 grow-3 border-y-0 flex ml-[10%];
+      @apply grow-3 hidden border-x-1;
       @apply dark:border-dark-200;
+
+      &--desktop {
+        @apply md:flex lg:ml-[10%];
+      }
+
+      &--mobile {
+        @apply flex flex-col md:hidden max-w-[90%] m-auto;
+
+        .navigation {
+          &__logo {
+            @apply ml-[0];
+          }
+
+          &__link {
+            @apply py-[4%] border-0;
+
+            &:not(:first-child):not(:last-child) {
+							@apply border-x-1;
+            }
+          }
+
+          &__links {
+            @apply hidden flex z-[2] divide-dashed w-full max-w-[100%] top-[10%] m-auto justify-center border-solid border-0 border-t-1;
+            @apply dark:bg-dark-600 dark:border-dark-200;
+            &.show {
+              @apply flex;
+            }
+          }
+
+          &__action {
+            @apply border-solid border-1 border-b-0 p-3;
+            @apply dark:border-dark-200;
+
+            &:last-child {
+              @apply border-x-0 ml-0;
+            }
+
+            &:first-of-type {
+              @apply rounded-tl-md;
+            }
+
+            svg, img {
+              @apply min-w-[2rem] h-auto;
+            }
+
+            &--mode {
+              @apply min-w-[fit-content];
+              img {
+                @apply m-0 animate-spin [animation-duration:10s];
+              }
+            }
+          }
+
+          &__block {
+            &-bar {
+              @apply pb-0 pr-0;
+            }
+          }
+        }
+      }
+
+      &-bar {
+        @apply flex justify-start p-[5%];
+      }
     }
+
     &__logo {
       @apply w-[15%] min-w-[100px] h-[fit-content]  m-auto;
+      @apply dark:border-dark-200;
     }
 
     &__links {
-      @apply flex mt-5 border-none mx-auto grow-3 max-w-[40%] justify-start;
+      @apply flex mt-5 border-none mx-auto grow-3 justify-start;
+      @apply max-w-[60%] md:max-w-[50%] lg:max-w-[45%] xl:max-w-[40%];
     }
 
     &__link {
-      @apply capitalize px-[5%] py-[8%] min-w-[15%] font-light tracking-wider text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;;
-      @apply dark:border-dark-350;
+      @apply capitalize px-[4%] py-[8%] min-w-[15%] font-light tracking-wider text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
+      @apply dark:border-dark-200;
 
       &.active {
         @apply text-light-500;
         @apply dark:bg-dark-350;
       }
 
-      &:first-child{
-				@apply rounded-tl-lg;
-			}
+      &:first-child {
+        @apply rounded-tl-lg;
+      }
 
-			&:last-child {
+      &:not(:last-child) {
+        @apply border-r-0;
+      }
+
+      &:last-child {
         @apply rounded-tr-lg;
       }
 
       &--contact {
-        @apply max-w-sm p-[1rem] w-[fit-content] m-auto rounded-md border-solid ;
+        @apply max-w-sm py-[1rem] px-[0] w-[fit-content] m-auto rounded-md border-solid ;
         @apply dark:text-light-500 dark:bg-secondary-500;
       }
     }
+
     &__mode {
-      @apply flex items-center justify-center bg-transparent border-none cursor-pointer w-[10%] min-w-[100px];
+      @apply flex items-center justify-center border-solid border-x-1 border-y-0 bg-transparent cursor-pointer w-[10%] min-w-[100px];
+      @apply dark:border-dark-200;
+
       img {
-				@apply block m-auto w-[fit-content];
+        @apply block m-auto w-[fit-content];
         @apply animate-spin [animation-duration:10s];
       }
     }
@@ -135,40 +250,47 @@
   }
 
   .footer {
-		&__wrapper {
-			@apply pt-[5%] pb-[3%] ;
-			@apply dark:bg-dark-500 dark:text-light-550;
+    &__wrapper {
+      @apply pt-[5%] pb-[3%] ;
+      @apply dark:bg-dark-500 dark:text-light-550;
 
-			* {
+      * {
         font-family: 'Plus Jakarta Sans', SansSerif, sans-serif;
       }
-		}
-
-		&__text {
-			@apply text-center font-medium text-[5.5rem] mx-auto my-[2%];
-		}
-		&__rights {
-			@apply text-sm font-normal mt-0 tracking-wider;
     }
 
-		&__cta {
-			@apply mx-auto max-w-[20vw] block w-[fit-content] h-[fit-content];
-			@apply animate-spin [animation-duration:10s];
-		}
+    &__text {
+      @apply text-center font-medium sm:text-[3.5rem] lg:text-[5.5rem] mx-auto my-[2%];
+    }
 
-		&__link {
-			@apply dark:text-light-550 mx-[10px] font-light;
+    &__rights {
+      @apply text-sm font-normal mt-0 tracking-wider;
+    }
 
-			&:hover {
-				@apply no-underline;
-			}
+    &__cta {
+      @apply mx-auto max-w-[20vw] block w-[fit-content] h-[fit-content];
+      @apply animate-spin [animation-duration:10s];
 
-			&:last-child{
-				@apply mr-[0];
-			}
-		}
-		&__block{
-			@apply flex justify-between mx-[5%];
-		}
+      img {
+        @apply w-full h-full;
+      }
+    }
+
+    &__link {
+      @apply mx-[10px] font-light text-dark-200;
+      @apply dark:text-light-550;
+
+      &:hover {
+        @apply no-underline;
+      }
+
+      &:last-child {
+        @apply mr-[0];
+      }
+    }
+
+    &__block {
+      @apply flex justify-between mx-[5%];
+    }
   }
 </style>
