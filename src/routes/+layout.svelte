@@ -10,7 +10,7 @@
 	import letsTalk from '$lib/assets/lets-talk.png';
 	import letsTalkLight from '$lib/assets/lets-talkLight.png';
 	import sunLight from '$lib/assets/sun-light.png';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, goto } from '$app/navigation';
 
 	let { children } = $props();
 	let pathName = $state('');
@@ -61,7 +61,7 @@
 
 <section class="navigation__wrapper" class:dark={darkMode}>
 	<div class="navigation__block navigation__block--desktop">
-		<img src={logoPry} alt="site logo" class="navigation__logo" />
+		<img src={logoPry} alt="site logo" class="navigation__logo" onclick={() => goto('/')} />
 		<nav class="navigation__links">
 			{#each Object.entries(links) as [ title, url ]}
 				<a href={url} class="navigation__link" class:active={isActiveUrl(url)}>{title}</a>
@@ -75,7 +75,7 @@
 
 	<div class="navigation__block navigation__block--mobile">
 		<div class="navigation__block-bar">
-			<img src={logoMobilePry} alt="site logo" class="navigation__logo" />
+			<img src={logoMobilePry} alt="site logo" class="navigation__logo" onclick={() => goto('/')} />
 
 			<button class="navigation__action navigation__action--dropdown" onclick={toggleExpansion}>
 				<img src={darkMode ? dropdown : dropdownLight} alt="show mobile dropdown" />
@@ -145,7 +145,7 @@
 
         .navigation {
           &__logo {
-            @apply ml-[0];
+            @apply ml-[0] ;
           }
 
           &__link {
@@ -202,7 +202,7 @@
     }
 
     &__logo {
-      @apply w-[15%] min-w-[100px] h-[fit-content]  m-auto;
+      @apply w-[15%] min-w-[100px] h-[fit-content]  m-auto cursor-pointer;
       @apply dark:border-dark-200;
     }
 
