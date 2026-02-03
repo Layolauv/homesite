@@ -8,6 +8,7 @@
 	import logoMobilePry from '$lib/assets/logoMobilePry.png';
 	import sunDark from '$lib/assets/sun-dark.png';
 	import letsTalk from '$lib/assets/lets-talk.png';
+	import letsTalkLight from '$lib/assets/lets-talkLight.png';
 	import sunLight from '$lib/assets/sun-light.png';
 	import { afterNavigate } from '$app/navigation';
 
@@ -100,7 +101,7 @@
 <section class="footer__wrapper" class:dark={darkMode}>
 	<p class="footer__text">{content.footerTextA} <br /> {content.footerTextB}</p>
 	<a class="footer__cta" href={contactUrl}>
-		<img src={letsTalk} alt="call to action">
+		<img src={darkMode ? letsTalk : letsTalkLight} alt="call to action">
 	</a>
 	<div class="footer__block">
 		<p class="footer__rights">{content.rightsReserved} </p>
@@ -260,7 +261,7 @@
     }
 
     &__text {
-      @apply text-center font-medium sm:text-[3.5rem] lg:text-[5.5rem] mx-auto my-[2%];
+      @apply text-center font-medium md:text-5xl lg:text-8xl mx-auto my-[2%];
     }
 
     &__rights {
