@@ -5,7 +5,18 @@ import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
-
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `
+				@use '$lib/assets/styles/fonts' as *;
+				@use '$lib/assets/styles/themes' as *;
+				@use '$lib/assets/styles/mixins' as *;
+				@use '$lib/assets/styles/variables' as *;
+				`,
+			}
+		}
+	},
 	test: {
 		expect: { requireAssertions: true },
 

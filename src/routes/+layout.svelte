@@ -1,15 +1,13 @@
 <script lang="ts">
-	import favicon from '$lib/assets/favicon.svg';
-	import dropdown from '$lib/assets/dropdown.svg';
-	import dropdownLight from '$lib/assets/dropdownLight.svg';
-	import sunlight from '$lib/assets/sunlight.svg';
-	import sunlightLight from '$lib/assets/sunlightLight.svg';
-	import logoPry from '$lib/assets/logoPry.png';
-	import logoMobilePry from '$lib/assets/logoMobilePry.png';
-	import sunDark from '$lib/assets/sun-dark.png';
-	import letsTalk from '$lib/assets/lets-talk.png';
-	import letsTalkLight from '$lib/assets/lets-talkLight.png';
-	import sunLight from '$lib/assets/sun-light.png';
+	import favicon from '$lib/assets/images/favicon.svg';
+	import dropdown from '$lib/assets/images/dropdown.svg';
+	import dropdownLight from '$lib/assets/images/dropdownLight.svg';
+	import sunlight from '$lib/assets/images/sunlight.svg';
+	import sunlightLight from '$lib/assets/images/sunlightLight.svg';
+	import logoPry from '$lib/assets/images/logoPry.png';
+	import logoMobilePry from '$lib/assets/images/logoMobilePry.png';
+	import letsTalk from '$lib/assets/images/lets-talk.png';
+	import letsTalkLight from '$lib/assets/images/lets-talkLight.png';
 	import { afterNavigate, goto } from '$app/navigation';
 
 	let { children } = $props();
@@ -68,8 +66,8 @@
 			{/each}
 		</nav>
 		<a class="navigation__link navigation__link--contact" href="/contact">Contact Me</a>
-		<button class="navigation__mode" aria-label="mode">
-			<img src={darkMode ? sunDark : sunLight} alt="toggle light or dark mode" />
+		<button class="navigation__mode" aria-label="mode" onclick={toggleDarkMode}>
+			<img src={darkMode ? sunlight : sunlightLight} alt="toggle light or dark mode" />
 		</button>
 	</div>
 
@@ -94,7 +92,7 @@
 
 </section>
 
-<section class="body" class:dark={darkMode}>
+<section class="page" class:dark={darkMode}>
 	{@render children()}
 </section>
 
@@ -116,7 +114,11 @@
 
 
 <style lang="scss">
-  @reference "./layout.scss";
+  /* svelte-ignore css_unused_selector */
+
+	* {
+		@apply font-worksans;
+	}
   section {
     @apply bg-light-500;
     @apply dark:bg-dark-600;
@@ -252,11 +254,11 @@
 
   .footer {
     &__wrapper {
-      @apply pt-[5%] pb-[3%] ;
+      @apply pt-[5%] pb-[3%];
       @apply dark:bg-dark-500 dark:text-light-550;
 
       * {
-        font-family: 'Plus Jakarta Sans', SansSerif, sans-serif;
+        @apply font-jakarta;
       }
     }
 
@@ -278,7 +280,7 @@
     }
 
     &__link {
-      @apply mx-[10px] font-light text-dark-200;
+      @apply mx-[10px] font-light text-dark-200 underline;
       @apply dark:text-light-550;
 
       &:hover {
