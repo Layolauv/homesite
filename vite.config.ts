@@ -9,10 +9,10 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				additionalData: `
-				@use '$lib/assets/styles/fonts' as *;
-				@use '$lib/assets/styles/themes' as *;
-				@use '$lib/assets/styles/mixins' as *;
-				@use '$lib/assets/styles/variables' as *;
+				@use '$assets/styles/fonts' as *;
+				@use '$assets/styles/themes' as *;
+				@use '$assets/styles/mixins' as *;
+				@use '$assets/styles/variables' as *;
 				`,
 			}
 		}

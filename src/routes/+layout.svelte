@@ -1,13 +1,14 @@
 <script lang="ts">
-	import favicon from '$lib/assets/images/favicon.svg';
-	import dropdown from '$lib/assets/images/dropdown.svg';
-	import dropdownLight from '$lib/assets/images/dropdownLight.svg';
-	import sunlight from '$lib/assets/images/sunlight.svg';
-	import sunlightLight from '$lib/assets/images/sunlightLight.svg';
-	import logoPry from '$lib/assets/images/logoPry.png';
-	import logoMobilePry from '$lib/assets/images/logoMobilePry.png';
-	import letsTalk from '$lib/assets/images/lets-talk.png';
-	import letsTalkLight from '$lib/assets/images/lets-talkLight.png';
+	import './layout.scss';
+	import favicon from '$assets/images/favicon.svg';
+	import dropdown from '$assets/images/dropdown.svg';
+	import dropdownLight from '$assets/images/dropdownLight.svg';
+	import sunlight from '$assets/images/sunlight.svg';
+	import sunlightLight from '$assets/images/sunlightLight.svg';
+	import logoPry from '$assets/images/logoPry.png';
+	import logoMobilePry from '$assets/images/logoMobilePry.png';
+	import letsTalk from '$assets/images/lets-talk.png';
+	import letsTalkLight from '$assets/images/lets-talkLight.png';
 	import { afterNavigate, goto } from '$app/navigation';
 
 	let { children } = $props();
@@ -120,7 +121,7 @@
 		@apply font-worksans;
 	}
   section {
-    @apply bg-light-500;
+    @apply bg-white-400;
     @apply dark:bg-dark-600;
   }
 
@@ -218,7 +219,7 @@
       @apply dark:border-dark-200;
 
       &.active {
-        @apply text-light-500;
+        @apply text-white-400;
         @apply dark:bg-dark-350;
       }
 
@@ -236,7 +237,7 @@
 
       &--contact {
         @apply max-w-sm py-[1rem] px-[0] w-[fit-content] m-auto rounded-md border-solid ;
-        @apply dark:text-light-500 dark:bg-secondary-500;
+        @apply dark:text-white-400 dark:bg-secondary-500;
       }
     }
 
