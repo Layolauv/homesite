@@ -1,16 +1,15 @@
 <script lang="ts">
-	import favicon from '$lib/assets/favicon.svg';
-	import dropdown from '$lib/assets/dropdown.svg';
-	import dropdownLight from '$lib/assets/dropdownLight.svg';
-	import sunlight from '$lib/assets/sunlight.svg';
-	import sunlightLight from '$lib/assets/sunlightLight.svg';
-	import logoPry from '$lib/assets/logoPry.png';
-	import logoMobilePry from '$lib/assets/logoMobilePry.png';
-	import sunDark from '$lib/assets/sun-dark.png';
-	import letsTalk from '$lib/assets/lets-talk.png';
-	import letsTalkLight from '$lib/assets/lets-talkLight.png';
-	import sunLight from '$lib/assets/sun-light.png';
-	import { afterNavigate } from '$app/navigation';
+	import './layout.scss';
+	import favicon from '$assets/images/favicon.svg';
+	import dropdown from '$assets/images/dropdown.svg';
+	import dropdownLight from '$assets/images/dropdownLight.svg';
+	import sunlight from '$assets/images/sunlight.svg';
+	import sunlightLight from '$assets/images/sunlightLight.svg';
+	import logoPry from '$assets/images/logoPry.png';
+	import logoMobilePry from '$assets/images/logoMobilePry.png';
+	import letsTalk from '$assets/images/lets-talk.png';
+	import letsTalkLight from '$assets/images/lets-talkLight.png';
+	import { afterNavigate, goto } from '$app/navigation';
 
 	let { children } = $props();
 	let pathName = $state('');
@@ -61,21 +60,21 @@
 
 <section class="navigation__wrapper" class:dark={darkMode}>
 	<div class="navigation__block navigation__block--desktop">
-		<img src={logoPry} alt="site logo" class="navigation__logo" />
+		<img src={logoPry} alt="site logo" class="navigation__logo" onclick={() => goto('/')} />
 		<nav class="navigation__links">
 			{#each Object.entries(links) as [ title, url ]}
 				<a href={url} class="navigation__link" class:active={isActiveUrl(url)}>{title}</a>
 			{/each}
 		</nav>
 		<a class="navigation__link navigation__link--contact" href="/contact">Contact Me</a>
-		<button class="navigation__mode" aria-label="mode">
-			<img src={darkMode ? sunDark : sunLight} alt="toggle light or dark mode" />
+		<button class="navigation__mode" aria-label="mode" onclick={toggleDarkMode}>
+			<img src={darkMode ? sunlight : sunlightLight} alt="toggle light or dark mode" />
 		</button>
 	</div>
 
 	<div class="navigation__block navigation__block--mobile">
 		<div class="navigation__block-bar">
-			<img src={logoMobilePry} alt="site logo" class="navigation__logo" />
+			<img src={logoMobilePry} alt="site logo" class="navigation__logo" onclick={() => goto('/')} />
 
 			<button class="navigation__action navigation__action--dropdown" onclick={toggleExpansion}>
 				<img src={darkMode ? dropdown : dropdownLight} alt="show mobile dropdown" />
@@ -94,7 +93,7 @@
 
 </section>
 
-<section class="body" class:dark={darkMode}>
+<section class="page" class:dark={darkMode}>
 	{@render children()}
 </section>
 
@@ -116,9 +115,13 @@
 
 
 <style lang="scss">
-  @reference "./layout.scss";
+  /* svelte-ignore css_unused_selector */
+
+	* {
+		@apply font-worksans;
+	}
   section {
-    @apply bg-light-500;
+    @apply bg-white-400;
     @apply dark:bg-dark-600;
   }
 
@@ -145,7 +148,7 @@
 
         .navigation {
           &__logo {
-            @apply ml-[0];
+            @apply ml-[0] ;
           }
 
           &__link {
@@ -202,7 +205,7 @@
     }
 
     &__logo {
-      @apply w-[15%] min-w-[100px] h-[fit-content]  m-auto;
+      @apply w-[15%] min-w-[100px] h-[fit-content]  m-auto cursor-pointer;
       @apply dark:border-dark-200;
     }
 
@@ -216,7 +219,7 @@
       @apply dark:border-dark-200;
 
       &.active {
-        @apply text-light-500;
+        @apply text-white-400;
         @apply dark:bg-dark-350;
       }
 
@@ -234,7 +237,7 @@
 
       &--contact {
         @apply max-w-sm py-[1rem] px-[0] w-[fit-content] m-auto rounded-md border-solid ;
-        @apply dark:text-light-500 dark:bg-secondary-500;
+        @apply dark:text-white-400 dark:bg-secondary-500;
       }
     }
 
@@ -252,11 +255,11 @@
 
   .footer {
     &__wrapper {
-      @apply pt-[5%] pb-[3%] ;
+      @apply pt-[5%] pb-[3%];
       @apply dark:bg-dark-500 dark:text-light-550;
 
       * {
-        font-family: 'Plus Jakarta Sans', SansSerif, sans-serif;
+        @apply font-jakarta;
       }
     }
 
@@ -278,7 +281,7 @@
     }
 
     &__link {
-      @apply mx-[10px] font-light text-dark-200;
+      @apply mx-[10px] font-light text-dark-200 underline;
       @apply dark:text-light-550;
 
       &:hover {
