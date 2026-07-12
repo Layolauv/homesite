@@ -129,6 +129,10 @@
     &__wrapper {
       @apply flex max-w-[100vw] overflow-hidden border-solid border-0 border-b-1;
       @apply dark:border-dark-200;
+
+     * {
+       @apply font-worksans;
+     }
     }
 
     &__action {
@@ -210,12 +214,12 @@
     }
 
     &__links {
-      @apply flex mt-5 border-none mx-auto grow-3 justify-start;
+      @apply grid grid-cols-4 mt-5 border-none mx-auto grow-3 justify-start;
       @apply max-w-[60%] md:max-w-[50%] lg:max-w-[45%] xl:max-w-[40%];
     }
 
     &__link {
-      @apply capitalize px-[4%] py-[8%] min-w-[15%] font-light tracking-wider text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
+      @apply capitalize py-[20%] font-normal text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
       @apply dark:border-dark-200;
 
       &.active {
@@ -236,8 +240,9 @@
       }
 
       &--contact {
-        @apply max-w-sm py-[1rem] px-[0] w-[fit-content] m-auto rounded-md border-solid ;
-        @apply dark:text-white-400 dark:bg-secondary-500;
+        @apply max-w-sm p-[1.2%] m-auto rounded-md border-solid ;
+        @apply dark:text-white-400 dark:bg-blue-900;
+				box-shadow: -2px -1px 4px #526A7F ;
       }
     }
 
