@@ -148,7 +148,7 @@
       }
 
       &--mobile {
-        @apply flex flex-col md:hidden max-w-[90%] m-auto;
+        @apply flex flex-col md:hidden m-auto;
 
         .navigation {
           &__logo {
@@ -156,7 +156,7 @@
           }
 
           &__link {
-            @apply py-[4%] border-0;
+            @apply py-[8%]  border-0 text-[12px];
 
             &:not(:first-child):not(:last-child) {
 							@apply border-x-1;
@@ -167,7 +167,7 @@
             @apply hidden flex z-[2] divide-dashed w-full max-w-[100%] top-[10%] m-auto justify-center border-solid border-0 border-t-1;
             @apply dark:bg-dark-600 dark:border-dark-200;
             &.show {
-              @apply flex;
+              @apply grid;
             }
           }
 
@@ -219,7 +219,7 @@
     }
 
     &__link {
-      @apply capitalize py-[20%] font-normal text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
+      @apply capitalize py-[15%] font-normal text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
       @apply dark:border-dark-200;
 
       &.active {
@@ -240,7 +240,7 @@
       }
 
       &--contact {
-        @apply max-w-sm p-[1.2%] m-auto rounded-md border-solid ;
+        @apply max-w-sm p-[.8%] m-auto rounded-md border-solid ;
         @apply dark:text-white-400 dark:bg-blue-900;
 				box-shadow: -2px -1px 4px #526A7F ;
       }
