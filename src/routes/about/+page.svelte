@@ -61,6 +61,29 @@
 	</div>
 </section>
 
+<section class="projects">
+	<h2 class="projects__title">Publications</h2>
+	<div class="projects__controls">
+		<h2 class="projects__controls--subtitle">Publications</h2>
+		<div class="projects__controls--actions">
+			<button>left</button>
+			<button>right</button>
+		</div>
+	</div>
+
+	<div class="projects__list">
+		{#each content.projects as { title, url, img, tags }}
+			<div class="projects__list-item">
+				<img src={img} />
+			</div>
+			<a class="publications__list-item" href={url} target="_blank">
+			</a>
+		{/each}
+	</div>
+
+
+</section>
+
 
 <style lang="scss">
   .hero {
@@ -177,8 +200,8 @@
   .publications {
     @apply dark:bg-grey-700 w-[97%] mx-auto rounded-[40px];
 
-    &__list-item{
-			@apply max-md:border-t-1;
+    &__list-item {
+      @apply max-md:border-t-1;
       &:first-child {
         @apply max-md:border-t-1;
       }
@@ -186,11 +209,12 @@
       &:last-child {
         @apply max-md:border-b-1;
       }
-			&-title {
+
+      &-title {
         h3 {
           @apply font-medium;
         }
       }
-		}
+    }
   }
 </style>

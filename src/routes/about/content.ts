@@ -11,7 +11,7 @@ export default {
 	},
 	experience: [
 		{
-			role: 'Senior Software Developer',
+			role: 'Integration Engineer',
 			duration: 'aug 2024 - present',
 			company: 'Arrivia',
 			location: 'US',
@@ -59,7 +59,6 @@ export default {
 			]
 		}
 	],
-
 	publications: [
 		{
 			title: 'Creating a React PWA with Social Login Authentication',
@@ -85,5 +84,20 @@ export default {
 			date: '2024',
 			publication: 'THDCTech'
 		}
+	],
+	projects: [
+		{
+			title: 'Wordlots',
+			url: '',
+			img: '',
+			tags: []
+		},
+		{
+			title: 'THDC Checkout Builder',
+			url: '',
+			img: '',
+			tags: []
+		}
 	]
+
 };
