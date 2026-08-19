@@ -84,20 +84,5 @@ export default {
 			date: '2024',
 			publication: 'THDCTech'
 		}
-	],
-	projects: [
-		{
-			title: 'Wordlots',
-			url: '',
-			img: '',
-			tags: []
-		},
-		{
-			title: 'THDC Checkout Builder',
-			url: '',
-			img: '',
-			tags: []
-		}
 	]
-
 };

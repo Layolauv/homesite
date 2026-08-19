@@ -28,13 +28,13 @@
 	let links = {
 		'home': '/',
 		'About Me': '/about',
-		'Musings': '/musings',
-		'Projects': '/projects'
+		'Projects': '/projects',
+		'Musings': '/musings'
 	};
 	let mobileLinks = {
 		'About Me': '/about',
-		'Musings': '/musings',
 		'Projects': '/projects',
+		'Musings': '/musings',
 		'Contact Me': '/contact'
 	};
 
@@ -278,10 +278,10 @@
 
     &__cta {
       @apply mx-auto max-w-[20vw] block w-[fit-content] h-[fit-content];
-      @apply animate-spin [animation-duration:10s];
 
       img {
         @apply w-full h-full;
+        @apply animate-spin [animation-duration:1m];
       }
     }
 
