@@ -17,7 +17,6 @@
 
 		const right = element.offsetParent.clientWidth - (currentLeft + element.offsetWidth);
 
-		console.log(right);
 		if (right >=0) {
 			element.style.right = '0px';
 			return;
