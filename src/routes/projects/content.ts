@@ -4,15 +4,15 @@ export default {
 	projects: [
 		{
 			title: 'Wordlots',
-			url: '',
-			img: '',
-			tags: []
+			url: 'https://www.wordlots.com',
+			img: 'assets/workbooklogo.jpg',
+			tags: [ 'Vue', 'SPA', 'PWA' ]
 		},
 		{
 			title: 'THDC Checkout Builder',
-			url: '',
-			img: '',
-			tags: []
+			url: 'https://simplecheckoutbuilder.com/',
+			img: 'assets/SCB DP.png',
+			tags: [ 'React', 'Remix.Run', 'Shopify Polaris' ]
 		}
 	]
-}
+};
