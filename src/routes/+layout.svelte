@@ -28,13 +28,13 @@
 	let links = {
 		'home': '/',
 		'About Me': '/about',
-		'Musings': '/musings',
-		'Projects': '/projects'
+		'Projects': '/projects',
+		'Musings': '/musings'
 	};
 	let mobileLinks = {
 		'About Me': '/about',
-		'Musings': '/musings',
 		'Projects': '/projects',
+		'Musings': '/musings',
 		'Contact Me': '/contact'
 	};
 
@@ -129,6 +129,10 @@
     &__wrapper {
       @apply flex max-w-[100vw] overflow-hidden border-solid border-0 border-b-1;
       @apply dark:border-dark-200;
+
+     * {
+       @apply font-worksans;
+     }
     }
 
     &__action {
@@ -144,7 +148,7 @@
       }
 
       &--mobile {
-        @apply flex flex-col md:hidden max-w-[90%] m-auto;
+        @apply flex flex-col md:hidden m-auto;
 
         .navigation {
           &__logo {
@@ -152,7 +156,7 @@
           }
 
           &__link {
-            @apply py-[4%] border-0;
+            @apply py-[8%]  border-0 text-[12px];
 
             &:not(:first-child):not(:last-child) {
 							@apply border-x-1;
@@ -163,7 +167,7 @@
             @apply hidden flex z-[2] divide-dashed w-full max-w-[100%] top-[10%] m-auto justify-center border-solid border-0 border-t-1;
             @apply dark:bg-dark-600 dark:border-dark-200;
             &.show {
-              @apply flex;
+              @apply grid;
             }
           }
 
@@ -210,12 +214,12 @@
     }
 
     &__links {
-      @apply flex mt-5 border-none mx-auto grow-3 justify-start;
+      @apply grid grid-cols-4 mt-5 border-none mx-auto grow-3 justify-start;
       @apply max-w-[60%] md:max-w-[50%] lg:max-w-[45%] xl:max-w-[40%];
     }
 
     &__link {
-      @apply capitalize px-[4%] py-[8%] min-w-[15%] font-light tracking-wider text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
+      @apply capitalize py-[15%] font-normal text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
       @apply dark:border-dark-200;
 
       &.active {
@@ -236,8 +240,9 @@
       }
 
       &--contact {
-        @apply max-w-sm py-[1rem] px-[0] w-[fit-content] m-auto rounded-md border-solid ;
-        @apply dark:text-white-400 dark:bg-secondary-500;
+        @apply max-w-sm p-[.8%] m-auto rounded-md border-solid ;
+        @apply dark:text-white-400 dark:bg-blue-900;
+				box-shadow: -2px -1px 4px #526A7F ;
       }
     }
 
@@ -273,10 +278,10 @@
 
     &__cta {
       @apply mx-auto max-w-[20vw] block w-[fit-content] h-[fit-content];
-      @apply animate-spin [animation-duration:10s];
 
       img {
         @apply w-full h-full;
+        @apply animate-spin [animation-duration:1m];
       }
     }
 

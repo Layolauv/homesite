@@ -11,8 +11,8 @@ export default {
 	},
 	experience: [
 		{
-			role: 'Senior Software Developer',
-			duration: 'feb 2024 - present',
+			role: 'Integration Engineer',
+			duration: 'aug 2024 - present',
 			company: 'Arrivia',
 			location: 'US',
 			points: [
@@ -30,23 +30,6 @@ export default {
 			]
 		},
 		{
-			role: 'Lead Engineer / CTO',
-			duration: 'may 2021 - feb 2024',
-			company: 'THDCTech',
-			location: 'NG',
-			points: [
-					`Built MVPs for multiple startups from scratch, personally writing the core
-					architecture using NestJS and React`,
-				`Automated the software development lifecycle by implementing CI/CD
-					pipelines and Docker containerization, cutting development -to-deploy time
-					by 20%.`,
-					`Shipped scalable product roadmaps by translating stakeholder business logic
-					into technical specifications and database schema designs.`,
-					`Mentored a small engineering team through pair programming and code
-					reviews to maintain high architectural standards.`
-			]
-		},
-		{
 			role: 'Senior Software Engineer',
 			duration: 'jul 2023 - jul 2024',
 			company: 'Colgate-Palmolive',
@@ -60,5 +43,46 @@ export default {
 				a 15% improvement in initial page load times.`
 			]
 		},
+		{
+			role: 'Senior Product Engineer',
+			duration: 'feb 2022 - mar 2023',
+			company: 'BCG',
+			location: 'US',
+			points: [
+				`Engineered the frontend for a predictive AI tool using Angular and NgRx,
+				enabling a global airline to visualize data benchmarks that saved $100M in
+				operating costs.`,
+				`Implemented complex data visualization layers using D3.js and Vega-Lite to
+				turn predictive model outputs into actionable dashboards for stakeholders.`,
+				`Built RESTful endpoints using FastAPI (Python) and SQLAlchemy, optimizing
+					the data-fetching layer to support real-time performance tracking.`
+			]
+		}
+	],
+	publications: [
+		{
+			title: 'Creating a React PWA with Social Login Authentication',
+			url: 'https://developer.okta.com/blog/2025/07/22/react-pwa',
+			date: '2025',
+			publication: 'Okta'
+		},
+		{
+			title: 'Full User Authentication and Access Control: A Laravel Passport Tutorial ',
+			url: 'https://www.toptal.com/laravel/passport-tutorial-auth-user-access',
+			date: '2020',
+			publication: 'Toptal'
+		},
+		{
+			title: 'Stretch Your Imagination and Build a Delightful Sign-In Experience',
+			url: 'https://developer.okta.com/blog/2025/11/12/custom-signin',
+			date: '2025',
+			publication: 'Okta'
+		},
+		{
+			title: 'Web Development for Kids: HTML!',
+			url: 'https://blog.thdctech.com/web-development-for-kids-html/',
+			date: '2024',
+			publication: 'THDCTech'
+		}
 	]
 };
