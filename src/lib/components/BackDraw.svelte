@@ -1,17 +1,24 @@
 <script lang="ts">
-	import { afterNavigate } from '$app/navigation';
+	import { onMount } from 'svelte';
+	import { animate } from '$lib/components/Backdraw';
 
-	afterNavigate(() => {
-		const el = document.getElementById('backdraw');
+	onMount(() => {
+		animate({
+			selector: '#backdraw',
+			backgroundColor: '#151515',
+			gridSize: 80,
+			gridColor: '#111111',
+			particleColors: ['#526A7F', '#151515', '#0D0D0D', '#E6E6E6']
+		});
+
 	});
 
 </script>
 
-<section id="backdraw">
-
-</section>
+<canvas id="backdraw"></canvas>
 <style lang="scss">
   #backdraw {
-		@apply w-full h-[inherit] dark:bg-grey-700;
+    @apply w-full h-[inherit];
+    @apply dark:bg-grey-700;
   }
 </style>

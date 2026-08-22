@@ -1,13 +1,19 @@
 export default {
 	hero: {
 		ctas: [
-			{title: 'Explore My Work', url: ''},
-			{title: 'Read My Writing', url: ''}
+			{title: 'View My Resume', url: '#'},
+			{title: 'Read My Writing', url: '#'}
 		],
-		bottom:{
-			callout: 'Let’s Talk',
+		callout:{
+			text: 'Let’s Talk',
 			email: 'iam@layolauv.com',
-			summary: '8+ years of experience with JavaScript, Typescript PHP, and modern frameworks.'
+			summary: '9+ years of experience with JavaScript, Typescript, modern frontend and backend frameworks.'
 		}
-	}
+	},
+	marquee: [
+		'8+ Years Experience',
+		'$120M+ project impact',
+		'Worked with global brands',
+		'Authored technical publications'
+	]
 }

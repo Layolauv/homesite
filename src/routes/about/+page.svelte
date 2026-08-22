@@ -67,7 +67,7 @@
 <style lang="scss">
   .hero {
     @apply bg-light-600;
-    @apply dark:bg-dark-500;
+    @apply dark:bg-grey-800;
 
     * {
       @apply font-jakarta;

@@ -261,7 +261,7 @@
   .footer {
     &__wrapper {
       @apply pt-[5%] pb-[3%];
-      @apply dark:bg-dark-500 dark:text-light-550;
+      @apply dark:bg-grey-800 dark:text-light-550;
 
       * {
         @apply font-jakarta;
