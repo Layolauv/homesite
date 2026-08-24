@@ -1,7 +1,6 @@
 <script lang="ts">
 	import content from './content';
 	import expand from '$assets/images/expand.svg';
-
 </script>
 
 <svelte:head>
@@ -23,7 +22,7 @@
 </section>
 
 <section class="experience">
-	<h2 class="experience__title">Experience </h2>
+	<h2 class="experience__title">Experience</h2>
 	<div class="experience__list">
 		{#each content.experience as { role, duration, company, location, points }}
 			<div class="experience__list-item">
@@ -60,9 +59,6 @@
 		{/each}
 	</div>
 </section>
-
-
-
 
 <style lang="scss">
   .hero {
@@ -113,7 +109,7 @@
     @apply flex justify-between flex-col md:flex-row;
     &__title {
       @apply text-[16px] md:text-large text-dark-200 font-semibold tracking-wide w-[30%];
-      @apply dark:text-white-500 ;
+      @apply dark:text-white-500;
     }
 
     &__list {
