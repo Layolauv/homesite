@@ -3,10 +3,10 @@ export default {
 		title: 'Contact Me',
 		inquiries: {
 			text: 'inquiries',
-			email: 'inquiries'
+			email: 'iam@layolauv.me'
 		},
 		connect: {
-			title: '',
+			title: 'Connect with me',
 			socials: [
 				{
 					img: '/assets/x-logo.svg',

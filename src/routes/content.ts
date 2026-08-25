@@ -11,7 +11,7 @@ export default {
 		}
 	},
 	marquee: [
-		'8+ Years Experience',
+		'9+ Years Experience',
 		'$120M+ project impact',
 		'Worked with global brands',
 		'Authored technical publications'
