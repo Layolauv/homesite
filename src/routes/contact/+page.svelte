@@ -36,38 +36,39 @@
 
 <section class="contact">
 	<div class="contact__row">
-		<div class="contact__cta">
-			<img src={circlesInSquare} alt="Get In Touch" />
-			<h4 class="contact__cta-heading">Get In Touch</h4>
+		<div class="contact__cta-wrapper">
+			<div class="contact__cta">
+				<img src={circlesInSquare} alt="Get In Touch" />
+				<h4 class="contact__cta-heading">Get In Touch</h4>
+			</div>
 		</div>
 		<form class="contact__form">
-			<div class="form-fields">
-				<div class="form-row">
-					<div class="form-field">
-						<label for="first_name">First Name</label>
-						<input type="text" name="full_name" id="first_name" placeholder="" required>
-					</div>
-					<div class="form-field">
-						<label for="first_name">Last Name</label>
-						<input type="text" name="full_name" id="first_name" placeholder="" required>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="form-field">
-						<label for="first_name">Email</label>
-						<input type="text" name="full_name" id="first_name" placeholder="" required>
-					</div>
-					<div class="form-field">
-						<label for="first_name">Phone Number</label>
-						<input type="text" name="full_name" id="first_name" placeholder="" required>
-					</div>
+			<div class="form-row">
+				<div class="form-field">
+					<label for="first_name">First Name</label>
+					<input type="text" name="first_name" id="first_name" placeholder="Enter First Name" required>
 				</div>
 				<div class="form-field">
-					<label for="inquiry_details">Tour Inquiry Details</label>
-					<textarea rows="5" maxlength="800" class="form-control" name="inquiry_details" id="inquiry_details" placeholder="Tell us how we can help you..." ></textarea>
+					<label for="last_name">Last Name</label>
+					<input type="text" name="last_name" id="last_name" placeholder="Enter Last Name" required>
 				</div>
-				<input type="submit" value="Submit">
 			</div>
+			<div class="form-row">
+				<div class="form-field">
+					<label for="email">Email</label>
+					<input type="text" name="email" id="email" placeholder="Enter your Email" required>
+				</div>
+				<div class="form-field">
+					<label for="phone">Phone Number</label>
+					<input type="text" name="phone" id="phone" placeholder="+xx xxx xxx" required>
+				</div>
+			</div>
+			<div class="form-field">
+				<label for="message">Message</label>
+				<textarea rows="5" maxlength="800" class="form-control" name="message" id="message"
+									placeholder="Enter your Message"></textarea>
+			</div>
+			<input type="submit" value="Send">
 		</form>
 	</div>
 </section>
@@ -83,6 +84,13 @@
     @apply dark:bg-dark-500;
   }
 
+  .custom-row {
+    > :first-child {
+      @apply w-[35%];
+
+    }
+  }
+
   .info {
     &__title {
       @apply text-[16px] md:text-[58px] uppercase text-dark-200 font-semibold tracking-wide w-[30%];
@@ -91,12 +99,9 @@
     }
 
     &__row {
+      @extend .custom-row;
       @apply flex mt-10;
 
-      > :first-child {
-        @apply w-[30%];
-
-      }
 
       > div {
         @apply py-[1%];
@@ -142,26 +147,58 @@
     }
   }
 
+
   .contact {
     @apply pt-0;
     &__row {
+      @extend .custom-row;
       @apply flex border-t-2;
       @apply dark:border-t-dark-250;
-      > div {
-        @apply p-[2.5%];
-      }
 
       > :first-child {
-        @apply w-[30%] border-r-3;
+        @apply border-r-3;
         @apply dark:border-r-dark-250;
       }
     }
 
     &__cta {
-			@apply my-auto;
+      &-wrapper {
+        @apply flex flex-col justify-around;
+      }
+
       &-heading {
-				@apply font-medium text-[54px];
-				@apply dark:text-white
+        @apply font-medium text-[54px];
+        @apply dark:text-white
+      }
+    }
+
+    &__form {
+      @apply flex flex-col p-[5%] w-[60%];
+
+      .form-row {
+        @apply flex justify-between;
+        > * {
+          @apply w-[45%];
+        }
+      }
+
+      .form-field {
+        @apply flex flex-col mb-[5%];
+      }
+
+      label {
+        @apply text-[18px] font-medium mb-5;
+        @apply dark:text-white-400;
+      }
+
+      input:not([type="submit"]), textarea {
+        @apply border-2 ring-4 rounded-sm text-[18px] p-[10px];
+        @apply dark:border-grey-400 dark:ring-[#191919] dark:text-light-400;
+      }
+
+      input[type="submit"] {
+				@apply w-[fit-content] py-5 px-10 rounded-sm;
+				@apply dark:bg-foundation-blue-400;
       }
     }
   }

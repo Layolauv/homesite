@@ -93,7 +93,7 @@
       &--actions {
         @apply dark:bg-grey-700 p-1 my-auto h-[fit-content] flex justify-between border-1 border-grey-500 rounded-full;
         &-left, &-right {
-          @apply border-1 border-grey-400 py-[15px] px-[16px] mx-[4%] rounded-full cursor-pointer;
+          @apply border-1 border-grey-450 py-[15px] px-[16px] mx-[4%] rounded-full cursor-pointer;
           @apply dark:bg-grey-900;
 
           img {
