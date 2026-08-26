@@ -27,7 +27,12 @@
 				<p class="hero__action-callout-text">{content.hero.callout.text}</p>
 				<a class="hero__action-callout-email" href="mailto:iam@layolauv.com">{content.hero.callout.email}</a>
 			</div>
-			<div class="hero__action-callout-summary">{content.hero.callout.summary}</div>
+			<p class="hero__action-callout-summary">{content.hero.callout.summary}</p>
+			<div class="hero__action-ctas">
+				{#each content.hero.ctas as cta}
+					<a class="cta" href={cta.url}>{cta.title}</a>
+				{/each}
+			</div>
 		</div>
 	</div>
 </section>
@@ -58,15 +63,20 @@
   }
 
   .hero {
-    @apply h-[80vh] relative p-0;
+    @apply h-[500px] md:h-[80vh] relative p-0;
     &__wrapper {
-      @apply m-[5%] absolute top-[15%] px-[5%];
+      @apply m-[5%] absolute top-[10%] md:top-[15%] px-[5%];
+    }
+
+    .cta {
+      @apply border-1 py-2 px-4 mb-4 rounded-xl w-[max-content] text-[14px] md:text-[20px];
+      @apply dark:text-foundation-blue-500;
     }
 
     &__tc {
-      @apply flex;
+      @apply flex flex-col md:flex-row;
       &-title {
-        @apply text-[54px] font-normal;
+        @apply text-[28px] md:text-[54px] font-normal max-md:text-center;
         @apply dark:text-white-800;
         .pop {
           @apply dark:text-white-400;
@@ -74,33 +84,34 @@
       }
 
       &-ctas {
-        @apply flex flex-col ml-[10%];
-        .cta {
-          @apply border-1 py-2 px-4 mb-4 rounded-xl w-[max-content] text-[20px];
-          @apply dark:text-foundation-blue-500;
-        }
+        @apply hidden md:flex flex-col ml-[10%];
       }
     }
 
     &__action {
-      @apply flex mt-10 justify-between;
+      @apply flex flex-col md:flex-row mt-10 justify-between;
       * {
-        @apply text-white-400 text-[20px];
+        @apply text-white-400 text-[14px] md:text-[20px];
+      }
+
+      &-ctas {
+				@apply flex md:hidden mt-10 justify-between;
       }
 
       &-callout {
+        @apply max-md:hidden;
         &-text {
           @apply font-medium text-[24px];
         }
 
         &-summary {
-          @apply w-[50%];
+          @apply max-md:text-center md:w-[50%];
         }
 
         &-email {
           &:hover {
-						@apply cursor-pointer;
-						@apply dark:text-white-700;
+            @apply cursor-pointer;
+            @apply dark:text-white-700;
           }
         }
       }
@@ -108,7 +119,7 @@
   }
 
   .marquee {
-    @apply px-0 py-10 w-[100vw] border-y-4 border-grey-600 overflow-hidden relative flex;
+    @apply px-0 py-4 md:py-10 w-[100vw] border-y-4 border-grey-600 overflow-hidden relative flex;
     &__track {
       @apply flex w-[max-content];
       animation: scroll-left 15s linear infinite;
@@ -117,7 +128,7 @@
     &__list {
       @apply flex w-full justify-evenly ;
       &-item {
-        @apply text-foundation-blue-500 uppercase text-[18px] mx-2 flex w-[max-content];
+        @apply text-foundation-blue-500 uppercase text-[12px] md:text-[18px] mx-2 flex w-[max-content];
         span {
           @apply my-auto mx-2;
         }

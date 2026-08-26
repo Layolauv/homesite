@@ -260,7 +260,7 @@
 
   .footer {
     &__wrapper {
-      @apply pt-[5%] pb-[3%];
+      @apply py-[5%] md:pt-[5%] md:pb-[3%];
       @apply dark:bg-grey-800 dark:text-light-550;
 
       * {
@@ -277,7 +277,7 @@
     }
 
     &__cta {
-      @apply mx-auto max-w-[20vw] block w-[fit-content] h-[fit-content];
+      @apply max-md:my-[7%] mx-auto max-w-[20vw] block w-[fit-content] h-[fit-content];
 
       img {
         @apply w-full h-full;
@@ -299,7 +299,7 @@
     }
 
     &__block {
-      @apply flex justify-between mx-[5%];
+      @apply flex justify-between max-md:mt-[5%] mx-[5%];
     }
   }
 </style>
