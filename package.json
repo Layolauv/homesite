@@ -23,6 +23,7 @@
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.17",
 		"@vitest/browser-playwright": "^4.0.15",
+		"mdsvex": "^0.12.7",
 		"playwright": "^1.57.0",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.0",
