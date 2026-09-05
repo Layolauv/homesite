@@ -272,7 +272,7 @@
     }
 
     &__text {
-      @apply text-center font-medium md:text-5xl lg:text-8xl mx-auto my-[2%];
+      @apply text-center font-medium text-[33px] md:text-5xl lg:text-8xl mx-auto my-[2%];
     }
 
     &__rights {
@@ -280,7 +280,7 @@
     }
 
     &__cta {
-      @apply max-md:my-[7%] mx-auto max-w-[20vw] block w-[fit-content] h-[fit-content];
+      @apply max-md:my-[7%] mx-auto max-w-[25vw] md:max-w-[20vw] block w-[fit-content] h-[fit-content];
 
       img {
         @apply w-full h-full;

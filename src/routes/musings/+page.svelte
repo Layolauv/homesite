@@ -15,7 +15,7 @@
 </svelte:head>
 
 <section class="hero">
-	<h1 class="hero__title">Blog</h1>
+	<h1 class="hero__title">Musings</h1>
 </section>
 {#if latest}
 	<section class="latest">
@@ -47,7 +47,7 @@
 		<div class="post__item">
 			<img src={post.img} alt={post.title} class="post__img">
 			<h3 class="post__title">{post.title}</h3>
-			<p class="post__description">{post.description.substring(0, 100)}</p>
+			<p class="post__description">{post.description}</p>
 			<a href={`/musings/${post.slug}`} class="post__cta">Read More
 				<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd"
@@ -78,25 +78,25 @@
   }
 
   .latest {
-    @apply border-y-1 flex gap-[3vw];
+    @apply border-y-1 flex max-md:flex-col gap-[3vw];
     @apply dark:border-dark-250;
     &__img {
-      @apply w-[35vw] rounded-lg;
+      @apply w-[90vw] md:w-[35vw] rounded-lg;
     }
 
     &__content {
-      @apply w-[45vw] flex flex-col justify-between;
+      @apply w-[90vw] md:w-[45vw] flex flex-col justify-between;
 
       &-mid {
-        @apply flex;
+        @apply flex max-md:my-[8%];
         li {
-          @apply mr-[5vw] text-[18px];
+          @apply mr-[5vw] text-[12px] md:text-[18px];
         }
       }
     }
 
     &__title {
-      @apply text-white-500 font-semibold text-[32px] mb-5;
+      @apply text-white-500 font-semibold text-[20px] md:text-[32px] mb-5;
     }
 
     &__subtitle {
@@ -108,22 +108,22 @@
     }
 
     &__description {
-      @apply text-[20px] text-light-400 font-normal;
+      @apply text-[14px] md:text-[20px] text-light-400 font-normal;
     }
 
     &__cta {
-      @apply block w-[fit-content] py-5 px-7 rounded-md border-solid ml-auto;
+      @apply max-md:text-[14px] block w-[fit-content] py-5 px-7 rounded-md border-solid ml-auto;
       @apply dark:text-white-400 dark:bg-blue-900;
     }
   }
 
   .post {
     &s {
-      @apply grid grid-cols-3 gap-[3vw];
+      @apply grid grid-cols-1 md:grid-cols-3 gap-[3vw];
     }
 
     &__item {
-      @apply flex flex-col;
+      @apply flex flex-col max-md:my-4;
     }
 
     &__img {
@@ -131,15 +131,15 @@
     }
 
     &__title {
-      @apply text-white-500 font-medium text-[20px] my-2 ;
+      @apply text-white-500 font-medium text-[18px] md:text-[20px] my-2 ;
     }
 
     &__description {
-      @apply text-white-700 text-[18px] mb-5;
+      @apply text-white-700 text-[14px] md:text-[18px] mb-5;
     }
 
     &__cta{
-			@apply ml-auto mt-auto flex p-4 rounded-lg border-1;
+			@apply ml-auto mt-auto flex p-4 rounded-lg border-1 max-md:text-[14px];
 			@apply dark:text-white-600 dark:bg-dark-450 dark:border-grey-500;
 
 			svg {
