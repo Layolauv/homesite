@@ -12,7 +12,7 @@
 	<BackDraw />
 	<div class="hero__wrapper">
 		<div class="hero__tc">
-			<p class="hero__tc-title">Hello, I'm <span class="pop">Emmanuel.</span> <br /> <span class="pop">A full-stack engineer</span>
+			<p class="hero__tc-title">Hello, I'm <span class="pop">Layo.</span> <br /> A <span class="pop">software engineer</span>
 				building
 				<span class="pop">performant</span> systems for <span class="pop">global brands.</span>
 			</p>
