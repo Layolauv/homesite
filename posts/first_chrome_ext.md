@@ -7,9 +7,8 @@ description: 'Learn how to build, test, and launch your very first Google Chrome
 With step-by-step instructions to debug your code locally and publish your finished tool to the Chrome Web Store.'
 ---
 
-# [FCE-Simple Guide] Create Your First Chrome Extension: A Simple Guide
+# Create Your First Chrome Extension: A Simple Guide
 
-# Introduction
 
 Chrome extensions are powerful tools that can enhance your browsing experience by adding custom functionalities to the Chrome browser. This guide aims to provide a comprehensive, step-by-step walkthrough for beginners to create their first Chrome extension. Before we dive into the details, let's gain a brief understanding of what Chrome extensions are, their significance in personalizing browsing experiences, and the purpose of this guide.
 

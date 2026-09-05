@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './page.scss'
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { getPostBySlug } from '../Post';
@@ -18,7 +19,7 @@
 </svelte:head>
 
 
-<section>
+<section class="musing__page">
 	<svelte:component this={post.content} />
 </section>
 <style lang="scss">
