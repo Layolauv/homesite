@@ -5,9 +5,6 @@ tags: ['PHP', 'Laravel']
 img: '/blog-assets/laravel_passport_tutorial.jpg'
 description: "Setting up authentication and state in a stateless API context might seem somewhat problematic. But Laravel Passport gives developers a clean, straightforward way to add OAuth 2.0 to an app's API."
 ---
-
-# Full User Authentication and Access Control: A Laravel Passport Tutorial, Pt. 1
-
 When developing a web application, it is generally a good idea to split it into two tiers. A middle-tier API interacts with the database, and a web tier usually consists of a front-end SPA or MPA. This way, a web application is more loosely coupled, making it easier to manage and debug in the long run.
 When the API has been created, setting up authentication and state in a stateless API context might seem somewhat problematic.  In this article, we'll look at how to implement full user authentication and a simple form of access control in an API using Laravel and Passport. You should have experience working with Laravel as this is not an introductory tutorial.
 

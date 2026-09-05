@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './page.scss'
+	import './page.scss';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { getPostBySlug } from '../Post';
@@ -22,15 +22,29 @@
 	<a class="hero__link" href="/musings">&lt; Back to Musings</a>
 </section>
 
+<h1 class="musing__title">{post?.title}</h1>
+
 <section class="musing">
 	<svelte:component this={post.content} />
 </section>
 <style lang="scss">
 
-	.hero {
-		@apply dark:bg-dark-450 max-md:py-[10%];
-		&__link {
-			@apply text-[18px] md:text-[24px] text-light-400 font-jakarta underline font-normal;
-		}
-	}
+  * {
+    @apply font-jakarta;
+  }
+
+  .hero {
+    @apply dark:bg-dark-500 py-[10%] md:py-[2%];
+    &__link {
+      @apply text-[18px] md:text-[20px] text-light-400 font-jakarta underline font-normal;
+    }
+  }
+
+  .musing {
+    @apply pt-5;
+    &__title {
+      @apply text-[1.5rem] px-[5%] py-[3%] md:text-[3.425rem] border-y-1;
+      @apply dark:bg-dark-500 dark:text-white-500 dark:border-dark-250;
+    }
+  }
 </style>

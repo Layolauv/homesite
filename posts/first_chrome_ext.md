@@ -1,13 +1,10 @@
 ---
-title: 'Building Your First Chrome Extension'
+title: 'Building Your First Chrome Extension: A Step-by-Step Guide'
 date: '2024-08-23'
 tags: ['chrome', 'javascript']
 img: '/blog-assets/first_chrome_ext.jpg'
 description: "Learn how to build, test, and launch your very first Google Chrome extension from scratch with step-by-step instructions to debug your code locally and publish your finished tool to the Chrome Web Store."
 ---
-
-# Building Your First Chrome Extension: A Step-by-Step Guide
-
 Chrome extensions are powerful tools that enhance your browsing experience by adding custom functionality directly to Google Chrome. This guide provides a comprehensive walkthrough for beginners—from setting up your development environment and writing your first lines of code to debugging locally and publishing your finished creation to the Chrome Web Store.
 
 ---

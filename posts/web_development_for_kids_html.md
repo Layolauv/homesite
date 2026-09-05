@@ -1,13 +1,10 @@
 ---
-title: 'Web Development For Kids: HTML'
+title: 'Web Development For Kids: HTML!'
 date: '2024-05-01'
 tags: ['HTML', 'Javascript', 'CSS']
 img: '/blog-assets/web_development_for_kids_html.png'
 description: "Walk through the fundamentals of HTML with this beginner-friendly guide as you build a personalized bio page and interactive feedback form step by step. You'll master essential web development concepts from document structures and tags to form controls in a fun, practical crash course."
 ---
-
-# Web Development for Kids: HTML!
-
 I’m not sure why you want to learn HTML. Maybe you’ve heard that you need to learn it to build websites, or you heard one of your “tech friends” mention it in passing. Whatever the reason, welcome to this HTML crash course! 
 
 This guide serves as a practical cheat sheet to help you understand what HTML is, what it does, and how to build your very first webpage from scratch.
