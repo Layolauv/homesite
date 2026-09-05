@@ -2,25 +2,15 @@
 title: 'User Auth and Access Control With Laravel Passport'
 date: '2021-06-01'
 tags: ['PHP', 'Laravel']
-description: 'Setting up authentication and state in a stateless API in Laravel'
+img: '/blog-assets/laravel_passport_tutorial.jpg'
+description: "Setting up authentication and state in a stateless API context might seem somewhat problematic. But Laravel Passport gives developers a clean, straightforward way to add OAuth 2.0 to an app's API."
 ---
 
 # Full User Authentication and Access Control: A Laravel Passport Tutorial, Pt. 1
 
-Setting up authentication and state in a stateless API context might seem somewhat problematic. But Laravel Passport gives developers a clean, straightforward way to add OAuth 2.0 to an app's API.
-
-**Author:** Layo Folaranmi (Verified Expert in Engineering)  
-**Source:** [Toptal - Full User Authentication and Access Control: A Laravel Passport Tutorial, Pt. 1](https://www.toptal.com/developers/laravel/passport-tutorial-auth-user-access)
-
----
-
 When developing a web application, it is generally a good idea to split it into two tiers. A middle-tier API interacts with the database, and a web tier usually consists of a front-end SPA or MPA. This way, a web application is more loosely coupled, making it easier to manage and debug in the long run.
+When the API has been created, setting up authentication and state in a stateless API context might seem somewhat problematic.  In this article, we'll look at how to implement full user authentication and a simple form of access control in an API using Laravel and Passport. You should have experience working with Laravel as this is not an introductory tutorial.
 
-When the API has been created, setting up authentication and state in a stateless API context might seem somewhat problematic.
-
-In this article, we'll look at how to implement full user authentication and a simple form of access control in an API using Laravel and Passport. You should have experience working with Laravel as this is not an introductory tutorial.
-
----
 
 ## Installation Prerequisites
 

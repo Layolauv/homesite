@@ -2,7 +2,8 @@
 title: 'Web Development For Kids: HTML'
 date: '2024-05-01'
 tags: ['HTML', 'Javascript', 'CSS']
-description: 'Learn web development as if you were 5 years old.'
+img: '/blog-assets/web_development_for_kids_html.jpg'
+description: "Walk through the fundamentals of HTML with this beginner-friendly guide as you build a personalized bio page and interactive feedback form step by step. You'll master essential web development concepts from document structures and tags to form controls—in a fun, practical crash course."
 ---
 
 # Web Development for Kids: HTML!

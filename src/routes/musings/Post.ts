@@ -1,7 +1,8 @@
-interface Post {
+export interface Post {
 	slug: string;
 	content: string;
 	date: string;
+	img: string;
 	description: string;
 	tags: string[];
 	title: string;

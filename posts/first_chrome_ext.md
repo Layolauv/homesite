@@ -2,7 +2,9 @@
 title: 'Building Your First Chrome Extension'
 date: '2024-08-23'
 tags: ['chrome', 'javascript']
-description: 'How to create a google chrome extension'
+img: '/blog-assets/first_chrome_ext.jpg'
+description: 'Learn how to build, test, and launch your very first Google Chrome extension from scratch.
+With step-by-step instructions to debug your code locally and publish your finished tool to the Chrome Web Store.'
 ---
 
 # [FCE-Simple Guide] Create Your First Chrome Extension: A Simple Guide

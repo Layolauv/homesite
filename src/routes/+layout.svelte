@@ -66,7 +66,7 @@
 				<a href={url} class="navigation__link" class:active={isActiveUrl(url)}>{title}</a>
 			{/each}
 		</nav>
-		<a class="navigation__link navigation__link--contact" href="/contact">Contact Me</a>
+		<a class="navigation__link navigation__link--contact btn" href="/contact">Contact Me</a>
 		<button class="navigation__mode" aria-label="mode" onclick={toggleDarkMode}>
 			<img src={darkMode ? sunlight : sunlightLight} alt="toggle light or dark mode" />
 		</button>
@@ -117,6 +117,9 @@
 <style lang="scss">
   /* svelte-ignore css_unused_selector */
 
+	.btn {
+
+	}
 	* {
 		@apply font-worksans;
 	}
@@ -128,7 +131,7 @@
   .navigation {
     &__wrapper {
       @apply flex max-w-[100vw] overflow-hidden border-solid border-0 border-b-1;
-      @apply dark:border-dark-200;
+      @apply dark:border-dark-400;
 
      * {
        @apply font-worksans;
@@ -141,10 +144,10 @@
 
     &__block {
       @apply grow-3 hidden border-x-1;
-      @apply dark:border-dark-200;
+      @apply dark:border-dark-400;
 
       &--desktop {
-        @apply md:flex lg:ml-[10%];
+        @apply md:flex lg:ml-[5%];
       }
 
       &--mobile {
@@ -165,7 +168,7 @@
 
           &__links {
             @apply hidden flex z-[2] divide-dashed w-full max-w-[100%] top-[10%] m-auto justify-center border-solid border-0 border-t-1;
-            @apply dark:bg-dark-600 dark:border-dark-200;
+            @apply dark:bg-dark-600 dark:border-dark-400;
             &.show {
               @apply grid;
             }
@@ -173,7 +176,7 @@
 
           &__action {
             @apply border-solid border-1 border-b-0 p-3;
-            @apply dark:border-dark-200;
+            @apply dark:border-dark-400;
 
             &:last-child {
               @apply border-x-0 ml-0;
@@ -209,8 +212,8 @@
     }
 
     &__logo {
-      @apply w-[15%] min-w-[100px] h-[fit-content]  m-auto cursor-pointer;
-      @apply dark:border-dark-200;
+      @apply w-[11%] min-w-[100px] h-[fit-content]  m-auto cursor-pointer;
+      @apply dark:border-dark-400;
     }
 
     &__links {
@@ -220,11 +223,11 @@
 
     &__link {
       @apply capitalize py-[15%] font-normal text-center whitespace-nowrap no-underline text-light-400  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
-      @apply dark:border-dark-200;
+      @apply dark:border-dark-400;
 
       &.active {
         @apply text-white-400;
-        @apply dark:bg-dark-350;
+        @apply dark:bg-grey-600;
       }
 
       &:first-child {
@@ -247,8 +250,8 @@
     }
 
     &__mode {
-      @apply flex items-center justify-center border-solid border-x-1 border-y-0 bg-transparent cursor-pointer w-[10%] min-w-[100px];
-      @apply dark:border-dark-200;
+      @apply flex items-center justify-center border-solid border-x-1 border-y-0 bg-transparent cursor-pointer w-[5%] min-w-[100px];
+      @apply dark:border-dark-400;
 
       img {
         @apply block m-auto w-[fit-content];
