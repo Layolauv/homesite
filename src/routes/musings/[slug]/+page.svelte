@@ -18,10 +18,19 @@
 	<title>{post?.title}</title>
 </svelte:head>
 
+<section class="hero">
+	<a class="hero__link" href="/musings">&lt; Back to Musings</a>
+</section>
 
-<section class="musing__page">
+<section class="musing">
 	<svelte:component this={post.content} />
 </section>
 <style lang="scss">
 
+	.hero {
+		@apply dark:bg-dark-450 py-[10%];
+		&__link {
+			@apply text-[18px] md:text-[24px] text-light-400 font-jakarta underline font-normal;
+		}
+	}
 </style>
