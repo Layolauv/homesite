@@ -28,7 +28,7 @@
 <style lang="scss">
 
 	.hero {
-		@apply dark:bg-dark-450 py-[10%];
+		@apply dark:bg-dark-450 max-md:py-[10%];
 		&__link {
 			@apply text-[18px] md:text-[24px] text-light-400 font-jakarta underline font-normal;
 		}
