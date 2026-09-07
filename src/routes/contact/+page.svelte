@@ -2,13 +2,14 @@
 	import content from './content';
 	import circlesInSquare from '$assets/images/circlesInSquare.svg';
 	import Alert from 'sweetalert2';
+	import emailJs from '@emailjs/browser';
 
 	import {
 		PUBLIC_EMAILJS_SERVICE_KEY,
 		PUBLIC_CONTACT_TEMPLATE_KEY,
 		PUBLIC_EMAILJS_API_KEY,
-		PUBLIC_SUBSCRIBE_TEMPLATE_KEY
 	} from '$env/static/public';
+	import { theme } from '$lib/theme.svelte';
 
 	let isLoading = $state(false);
 
@@ -21,11 +22,18 @@
 	});
 
 	function submit() {
+
+		Alert.fire({
+			title: 'Thank you for reaching out!',
+			text: 'I\'d reach back to you in the next few days!',
+			icon: 'success'
+		});
+		return;
 		isLoading = true;
 		let sender = `${formData.firstName} ${formData.lastName}`;
 		let data = {
-			from_name: sender,
-			email_id: formData.email,
+			name: sender,
+			email: formData.email,
 			message: `You got a new inquiry from Layolauv.me
         Name : ${sender},
         Email: ${formData.email},
@@ -33,14 +41,17 @@
 				Message: ${formData.message}`
 		};
 
-		emailjs.send(PUBLIC_EMAILJS_SERVICE_KEY, PUBLIC_CONTACT_TEMPLATE_KEY, data, PUBLIC_EMAILJS_API_KEY)
+		emailJs.send(PUBLIC_EMAILJS_SERVICE_KEY, PUBLIC_CONTACT_TEMPLATE_KEY, data, PUBLIC_EMAILJS_API_KEY)
 			.then(
 				() => {
 					isLoading = false;
 					Alert.fire({
 						title: 'Thank you for reaching out!',
 						text: 'I\'d reach back to you in the next few days!',
-						icon: 'success'
+						icon: 'success',
+						customClass: {
+							container: theme.isDark() ? 'alert-dark': 'alert',
+						},
 					});
 				},
 				(error) => {
@@ -134,6 +145,10 @@
     @apply font-jakarta;
   }
 
+  div:where(.swal2-container) div:where(.swal2-popup) {
+		@apply bg-white-550;
+    @apply dark:bg-dark-500;
+  }
   section {
     @apply dark:bg-dark-500;
   }
