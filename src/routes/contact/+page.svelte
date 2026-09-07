@@ -19,7 +19,7 @@
 						 xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd"
 								d="M4.5 4.91738e-07L15.75 0C15.9489 0 16.1397 0.0790176 16.2803 0.21967C16.421 0.360322 16.5 0.551088 16.5 0.75V12C16.5 12.4142 16.1642 12.75 15.75 12.75C15.3358 12.75 15 12.4142 15 12V2.56066L1.28033 16.2803C0.987437 16.5732 0.512563 16.5732 0.21967 16.2803C-0.0732233 15.9874 -0.0732233 15.5126 0.21967 15.2197L13.9393 1.5L4.5 1.5C4.08579 1.5 3.75 1.16421 3.75 0.75C3.75 0.335787 4.08579 4.91738e-07 4.5 4.91738e-07Z"
-								fill="#1E1E1E" />
+								 />
 				</svg>
 			</a>
 		</div>
@@ -27,7 +27,12 @@
 			<h3 class="info__connect-title">{content.info.connect.title}</h3>
 			<ul class="info__connect-links">
 				{#each content.info.connect.socials as socials}
-					<li><a href={socials.url}><img src={socials.img} /></a></li>
+					<li>
+						<a href={socials.url}>
+							<img src={socials.img} alt="logo" class="hidden! dark:block!" />
+							<img src={socials.img2} alt="logo" class="block! dark:hidden!" />
+						</a>
+					</li>
 				{/each}
 			</ul>
 		</div>
@@ -80,7 +85,6 @@
   }
 
   section {
-    @apply bg-white-400;
     @apply dark:bg-dark-500;
   }
 
@@ -109,20 +113,24 @@
     }
 
     &__enquiries-title, &__connect-title {
-      @apply font-medium text-white-500 mb-5 md:mb-10;
+      @apply font-medium mb-5 md:mb-10;
+      @apply text-grey-300;
+      @apply dark:text-white-500;
     }
 
     &__enquiries {
-      @apply max-md:mx-[10%] max-md:border-b-3 md:border-r-3;
+      @apply max-md:mx-[10%] max-md:border-b-1 md:border-r-1;
+      @apply border-b-grey-100 md:border-r-grey-100;
       @apply dark:border-b-dark-250 md:dark:border-r-dark-250;
       &-email {
-        @apply max-md:mb-8 flex w-[fit-content] p-4 py-3 rounded-md;
-        @apply dark:text-white-600 dark:bg-grey-600;
+        @apply max-md:mb-8 flex w-[fit-content] p-4 py-3 rounded-md border-1;
+        @apply text-grey-400 bg-white-300 border-grey-100;
+        @apply dark:text-white-600 dark:bg-grey-600 dark:border-grey-700;
 
         &-icon {
-          @apply flex my-auto ml-4;
+          @apply flex my-auto ml-4 h-[10px];
           path {
-            fill: var(--color-foundation-blue-600)
+            @apply fill-foundation-blue-600
           }
         }
       }
@@ -132,15 +140,12 @@
     &__connect {
       @apply max-md:mx-[10%] max-md:mt-5 max-md:mb-10 md:pl-[5%] block;
       &-links {
-        @apply flex;
+        @apply grid grid-cols-3 gap-5;
         li {
-          @apply mx-4;
           a {
-            @apply dark:bg-grey-600 py-4 px-6 block;
-          }
-
-          &:first-child {
-            @apply ml-0;
+            @apply py-4 px-6 block border-1 rounded-md;
+            @apply bg-white-300 border-grey-100;
+            @apply dark:bg-grey-600 dark:border-grey-700;
           }
         }
       }
@@ -152,21 +157,23 @@
     @apply pt-0;
     &__row {
       @extend .custom-row;
-      @apply flex max-md:flex-col border-t-2;
-      @apply dark:border-t-dark-250;
+      @apply flex max-md:flex-col border-t-1;
+      @apply border-grey-100;
+      @apply dark:border-dark-250;
 
       > :first-child {
-        @apply md:border-r-3;
+        @apply md:border-r-1;
+        @apply md:border-grey-100;
         @apply md:dark:border-r-dark-250;
       }
 
-			> * {
+      > * {
         @apply max-md:mx-[10%];
-			}
+      }
     }
 
     &__cta {
-			@apply max-md:my-[15%];
+      @apply max-md:my-[15%];
       &-wrapper {
         @apply flex flex-col justify-around;
       }
@@ -176,9 +183,9 @@
         @apply dark:text-white
       }
 
-			img {
-				@apply max-md:w-[15%] max-md:mb-3;
-			}
+      img {
+        @apply max-md:w-[15%] max-md:mb-3;
+      }
     }
 
     &__form {
@@ -197,17 +204,20 @@
 
       label {
         @apply text-[14px] md:text-[18px] font-medium mb-5;
+        @apply text-grey-400;
         @apply dark:text-white-400;
       }
 
       input:not([type="submit"]), textarea {
-        @apply border-2 ring-4 rounded-sm text-[14px] md:text-[18px] p-[10px];
-        @apply dark:border-grey-400 dark:ring-[#191919] dark:text-light-400;
+        @apply border-1 ring-4 rounded-sm text-[14px] md:text-[18px] p-[10px];
+        @apply border-grey-100 ring-white-100 text-grey-300 bg-white-300;
+        @apply dark:border-grey-400 dark:ring-[#191919] dark:text-light-400 dark:bg-grey-700;
       }
 
       input[type="submit"] {
-				@apply w-full md:w-[fit-content] max-md:text-[14px] font-medium py-2 md:py-5 md:px-10 rounded-sm;
-				@apply dark:bg-foundation-blue-400;
+        @apply w-full md:w-[fit-content] max-md:text-[14px] font-medium py-2 md:py-5 md:px-10 rounded-sm;
+        @apply bg-foundation-blue-600 text-white-400;
+        @apply dark:bg-foundation-blue-400 dark:text-grey-700;
       }
     }
   }
