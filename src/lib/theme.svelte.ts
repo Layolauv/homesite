@@ -9,7 +9,7 @@ export const theme = $state({
 			if (!browser) return;
 			this.mode = Number(localStorage.getItem(DARK_MODE_KEY) ?? DARK_MODE_DEFAULT);
 			document.documentElement.classList.toggle('dark', this.mode === 1);
-			document.dispatchEvent(new CustomEvent('onDarkMode', { detail: this.mode }));
+			document.dispatchEvent(new CustomEvent('onModeChange', { detail: this.mode }));
 
 		},
 		toggle() {
@@ -17,7 +17,7 @@ export const theme = $state({
 			if (!browser) return;
 			localStorage.setItem(DARK_MODE_KEY, String(this.mode));
 			document.documentElement.classList.toggle('dark', this.mode === 1);
-			document.dispatchEvent(new CustomEvent('onDarkMode', { detail: this.mode }));
+			document.dispatchEvent(new CustomEvent('onModeChange', { detail: this.mode }));
 		},
 		isDark() {
 			return Number(this.mode) === 1;

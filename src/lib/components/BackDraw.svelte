@@ -26,7 +26,7 @@
 
 	onMount(() => {
 		toggleAnimate(theme.mode);
-		document.addEventListener('onDarkMode', ({ detail }) => toggleAnimate(detail));
+		document.addEventListener('onModeChange', ({ detail }) => toggleAnimate(detail));
 	});
 
 </script>

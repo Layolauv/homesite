@@ -15,7 +15,7 @@
 	let { children } = $props();
 	let pathName = $state('');
 	let expanded = $state(false);
-	
+
 	const isActiveUrl = (url: string) => pathName === url;
 	const toggleExpansion = () => expanded = !expanded;
 
@@ -79,11 +79,12 @@
 			<img src={logoMobilePry} alt="site logo" class="navigation__logo" onclick={() => goto('/')} />
 
 			<button class="navigation__action navigation__action--dropdown" onclick={toggleExpansion}>
-				<img src={theme.isDark() ? dropdown : dropdownLight} alt="show mobile dropdown" />
+				<img src={dropdown} alt="show mobile dropdown" class="hidden! dark:block!" />
+				<img src={dropdownLight} alt="show mobile dropdown" class="block! dark:hidden!" />
 			</button>
 			<button class="navigation__action navigation__action--mode" onclick={() => theme.toggle()}>
 				<img src={sunlight} alt="toggle light or dark mode" class="hidden! dark:block!" />
-			<img src={sunlightLight} alt="toggle light or dark mode" class="block! dark:hidden!" />
+				<img src={sunlightLight} alt="toggle light or dark mode" class="block! dark:hidden!" />
 			</button>
 		</div>
 
@@ -103,7 +104,8 @@
 <section class="footer__wrapper">
 	<p class="footer__text">{content.footerTextA} <br /> {content.footerTextB}</p>
 	<a class="footer__cta" href={contactUrl}>
-		<img src={theme.isDark() ? letsTalk : letsTalkLight} alt="call to action">
+		<img src={letsTalk} alt="call to action" class="hidden! dark:block!">
+		<img src={letsTalkLight} alt="call to action" class="block! dark:hidden!">
 	</a>
 	<div class="footer__block">
 		<p class="footer__rights">{content.rightsReserved} </p>
@@ -136,7 +138,7 @@
   .navigation {
     &__wrapper {
       @apply flex max-w-[100vw] overflow-hidden border-solid border-0 border-b-1;
-			@apply bg-white-450 border-grey-300;
+      @apply bg-white-450 border-grey-300;
       @apply dark:border-dark-400 dark:bg-dark-600;
 
       * {
@@ -174,7 +176,7 @@
 
           &__links {
             @apply hidden flex z-[2] divide-dashed w-full max-w-[100%] top-[10%] m-auto justify-center border-solid border-0 border-t-1;
-						@apply border-grey-300;
+            @apply border-grey-300;
             @apply dark:bg-dark-600 dark:border-dark-400;
             &.show {
               @apply grid;
@@ -183,7 +185,7 @@
 
           &__action {
             @apply border-solid border-1 border-b-0 p-3;
-						@apply border-grey-300;
+            @apply border-grey-300;
             @apply dark:border-dark-400;
 
             &:last-child {
@@ -221,7 +223,7 @@
 
     &__logo {
       @apply w-[11%] min-w-[100px] h-[fit-content]  m-auto cursor-pointer;
-			@apply border-grey-300;
+      @apply border-grey-300;
       @apply dark:border-dark-400;
     }
 
@@ -232,7 +234,7 @@
 
     &__link {
       @apply capitalize py-[15%] font-normal text-center whitespace-nowrap no-underline  text-[1rem] border-solid border-x-1 border-y-0 border-t-1;
-			@apply border-grey-300 border-x-grey-100 text-grey-300;
+      @apply border-grey-300 border-x-grey-100 text-grey-300;
       @apply dark:border-dark-400 dark:text-light-400;
 
       &.active {
@@ -242,7 +244,7 @@
 
       &:first-child {
         @apply rounded-tl-lg border-l-grey-300;
-				@apply dark:border-l-dark-400;
+        @apply dark:border-l-dark-400;
       }
 
       &:not(:last-child) {
@@ -256,14 +258,14 @@
 
       &--contact {
         @apply max-w-sm p-[.8%] m-auto rounded-md border-solid shadow-[-1px_-1px_4px];
-				@apply text-grey-500 border-foundation-blue-400 bg-foundation-blue-400 shadow-foundation-blue-400;
+        @apply text-grey-500 border-foundation-blue-400 bg-foundation-blue-400 shadow-foundation-blue-400;
         @apply dark:text-white-400 dark:border-blue-900 dark:bg-blue-900 dark:shadow-secondary-600;
       }
     }
 
     &__mode {
       @apply flex items-center justify-center border-solid border-x-1 border-y-0 bg-transparent cursor-pointer w-[5%] min-w-[100px];
-			@apply border-grey-300;
+      @apply border-grey-300;
       @apply dark:border-dark-400;
 
       img {

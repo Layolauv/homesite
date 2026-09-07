@@ -2,7 +2,6 @@
 
 	import BackDraw from '$lib/components/BackDraw.svelte';
 	import content from './content';
-	import { theme } from '$lib/theme.svelte';
 	import star from '$assets/images/star.svg';
 	import starLight from '$assets/images/starLight.svg';
 </script>
@@ -45,7 +44,8 @@
 		<ul class="marquee__list">
 			{#each content.marquee as point}
 				<li class="marquee__list-item">
-					<img src={theme.isDark() ? star : starLight} alt="star icon" />
+					<img src={star} alt="star icon" class="hidden! dark:block!" />
+					<img src={starLight} alt="star icon" class="block! dark:hidden!" />
 					<span>{point}</span>
 				</li>
 			{/each}
@@ -53,7 +53,8 @@
 		<ul class="marquee__list" aria-hidden="true">
 			{#each content.marquee as point}
 				<li class="marquee__list-item">
-					<img src={theme.isDark() ? star : starLight} alt="star icon" />
+					<img src={star} alt="star icon" class="hidden! dark:block!" />
+					<img src={starLight} alt="star icon" class="block! dark:hidden!" />
 					<span>{point}</span>
 				</li>
 			{/each}

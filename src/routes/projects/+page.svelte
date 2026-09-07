@@ -5,6 +5,7 @@
 	import rightArrow from '$assets/images/rightArrow.svg';
 	import rightArrowLight from '$assets/images/rightArrowLight.svg';
 	import arrowUp from '$assets/images/arrowUp.svg';
+	import arrowUpLight from '$assets/images/arrowUpLight.svg';
 	import { theme } from '$lib/theme.svelte.js';
 
 	function slideOnX(step) {
@@ -58,7 +59,8 @@
 					<div class="projects__list-item-content-header">
 						<a class="projects__list-item-link" href={url} target="_blank">
 							View Project
-							<img src={arrowUp} alt="open link" />
+							<img src={arrowUp} alt="open link" class="hidden! dark:inline!"/>
+							<img src={arrowUpLight} alt="open link" class="inline! dark:hidden!"/>
 						</a>
 					</div>
 
@@ -95,13 +97,14 @@
 
       &--actions {
         @apply p-1 my-auto h-[fit-content] flex justify-between border-1  rounded-full;
-				@apply bg-white-600 border-grey-300;
-				@apply dark:bg-grey-700 dark:border-grey-500;
+        @apply bg-white-400 border-white-600;
+        @apply dark:bg-grey-900 dark:border-grey-450;
+
 
 				&-left, &-right {
           @apply border-1 py-[15px] px-[16px] mx-[4%] rounded-full cursor-pointer;
-          @apply bg-white-400 border-white-600;
-          @apply dark:bg-grey-900 dark:border-grey-450;
+          @apply bg-white-600 border-grey-300;
+          @apply dark:bg-grey-700 dark:border-grey-500;
 
           img {
             @apply min-w-[3px];
@@ -117,6 +120,8 @@
 
     &__list {
       @apply flex mt-10 relative w-[fit-content];
+			@apply text-white-500;
+			@apply dark:text-grey-500;
       transition: left 0.3s ease;
 
       &-item {
@@ -127,6 +132,7 @@
 
         &-content {
           @apply py-[8%] relative w-[inherit] h-[inherit] flex justify-between flex-col backdrop-blur-sm;
+					@apply bg-grey-600/50;
           @apply dark:bg-light-600/50 ;
           &-header {
             @apply text-right m-4 leading-[105%];
