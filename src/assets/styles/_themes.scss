@@ -1,4 +1,5 @@
 @use 'tailwindcss';
+
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
@@ -44,6 +45,9 @@
   --color-shadow-200: #BCBCBC40;
   --color-secondary-600: #526A7F; /* secondary color dark mode*/
 
+
+  --color-foundation-blue-100: #D5DBE1;
+  --color-foundation-blue-800: #424D56;
   --color-foundation-blue-400: #93A3B1;
   --color-foundation-blue-500: #788C9D;
   --color-foundation-blue-600: #6D7F8F;
