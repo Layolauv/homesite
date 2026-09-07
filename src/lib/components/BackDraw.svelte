@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { animate } from '$lib/components/Backdraw';
-	import { DARK_MODE_DEFAULT, DARK_MODE_KEY } from '../../routes/content';
-
+	import { theme } from '$lib/theme.svelte';
 	const toggleAnimate = (val) => {
 		let bgColor, gridColor;
 		switch (parseInt(val, 10)) {
@@ -26,7 +25,7 @@
 	};
 
 	onMount(() => {
-		toggleAnimate(localStorage.getItem(DARK_MODE_KEY) || DARK_MODE_DEFAULT);
+		toggleAnimate(theme.mode);
 		document.addEventListener('onDarkMode', ({ detail }) => toggleAnimate(detail));
 	});
 

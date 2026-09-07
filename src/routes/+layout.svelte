@@ -21,7 +21,7 @@
 
 	afterNavigate(() => {
 		pathName = window.location.pathname;
-		console.log(theme);
+		theme.init();
 		expanded = false;
 	});
 
@@ -59,7 +59,7 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<section class="navigation__wrapper" class:dark={theme.isDark()}>
+<section class="navigation__wrapper">
 	<div class="navigation__block navigation__block--desktop">
 		<img src={logoPry} alt="site logo" class="navigation__logo" onclick={() => goto('/')} />
 		<nav class="navigation__links">
@@ -68,8 +68,9 @@
 			{/each}
 		</nav>
 		<a class="navigation__link navigation__link--contact btn" href="/contact">Contact Me</a>
-		<button class="navigation__mode" aria-label="mode" onclick={theme.toggle}>
-			<img src={theme.isDark() ? sunlight : sunlightLight} alt="toggle light or dark mode" />
+		<button class="navigation__mode" aria-label="mode" onclick={() => theme.toggle()}>
+			<img src={sunlight} alt="toggle light or dark mode" class="hidden! dark:block!" />
+			<img src={sunlightLight} alt="toggle light or dark mode" class="block! dark:hidden!" />
 		</button>
 	</div>
 
@@ -80,8 +81,9 @@
 			<button class="navigation__action navigation__action--dropdown" onclick={toggleExpansion}>
 				<img src={theme.isDark() ? dropdown : dropdownLight} alt="show mobile dropdown" />
 			</button>
-			<button class="navigation__action navigation__action--mode" onclick={theme.toggle}>
-				<img src={theme.isDark() ? sunlight : sunlightLight} alt="toggle light or dark mode" />
+			<button class="navigation__action navigation__action--mode" onclick={() => theme.toggle()}>
+				<img src={sunlight} alt="toggle light or dark mode" class="hidden! dark:block!" />
+			<img src={sunlightLight} alt="toggle light or dark mode" class="block! dark:hidden!" />
 			</button>
 		</div>
 
@@ -94,11 +96,11 @@
 
 </section>
 
-<section class="page" class:dark={theme.isDark()}>
+<section class="page">
 	{@render children()}
 </section>
 
-<section class="footer__wrapper" class:dark={theme.isDark()}>
+<section class="footer__wrapper">
 	<p class="footer__text">{content.footerTextA} <br /> {content.footerTextB}</p>
 	<a class="footer__cta" href={contactUrl}>
 		<img src={theme.isDark() ? letsTalk : letsTalkLight} alt="call to action">

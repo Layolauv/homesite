@@ -1,8 +1,11 @@
 <script lang="ts">
 	import content from './content';
 	import leftArrow from '$assets/images/leftArrow.svg';
+	import leftArrowLight from '$assets/images/leftArrowLight.svg';
 	import rightArrow from '$assets/images/rightArrow.svg';
+	import rightArrowLight from '$assets/images/rightArrowLight.svg';
 	import arrowUp from '$assets/images/arrowUp.svg';
+	import { theme } from '$lib/theme.svelte.js';
 
 	function slideOnX(step) {
 		const element = document.querySelector('.projects__list');
@@ -39,10 +42,10 @@
 		<h3 class="projects__controls--subtitle">{content.subtitle}</h3>
 		<div class="projects__controls--actions">
 			<button class="projects__controls--actions-left" onclick={left}>
-				<img src={leftArrow} alt="left slider arrow" />
+				<img src={theme.isDark() ? leftArrow : leftArrowLight} alt="left slider arrow" />
 			</button>
 			<button class="projects__controls--actions-right" onclick={right}>
-				<img src={rightArrow} alt="right slider arrow" />
+				<img src={theme.isDark() ? rightArrow : rightArrowLight} alt="right slider arrow" />
 			</button>
 		</div>
 	</div>
@@ -123,8 +126,8 @@
         }
 
         &-content {
-          @apply py-[8%] relative w-[inherit] h-[inherit] flex justify-between flex-col;
-          @apply dark:bg-light-600/50 backdrop-blur-sm;
+          @apply py-[8%] relative w-[inherit] h-[inherit] flex justify-between flex-col backdrop-blur-sm;
+          @apply dark:bg-light-600/50 ;
           &-header {
             @apply text-right m-4 leading-[105%];
           }
