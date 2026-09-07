@@ -2,6 +2,8 @@
 
 	import BackDraw from '$lib/components/BackDraw.svelte';
 	import content from './content';
+	import star from '$assets/images/star.svg';
+	import starLight from '$assets/images/starLight.svg';
 </script>
 
 <svelte:head>
@@ -12,7 +14,8 @@
 	<BackDraw />
 	<div class="hero__wrapper">
 		<div class="hero__tc">
-			<p class="hero__tc-title">Hello, I'm <span class="pop">Layo.</span> <br /> A <span class="pop">software engineer</span>
+			<p class="hero__tc-title">Hello, I'm <span class="pop">Layo.</span> <br /> A <span
+				class="pop">software engineer</span>
 				building
 				<span class="pop">performant</span> systems for <span class="pop">global brands.</span>
 			</p>
@@ -41,7 +44,8 @@
 		<ul class="marquee__list">
 			{#each content.marquee as point}
 				<li class="marquee__list-item">
-					<img src="/assets/star.svg" alt="star icon" />
+					<img src={star} alt="star icon" class="hidden! dark:block!" />
+					<img src={starLight} alt="star icon" class="block! dark:hidden!" />
 					<span>{point}</span>
 				</li>
 			{/each}
@@ -49,7 +53,8 @@
 		<ul class="marquee__list" aria-hidden="true">
 			{#each content.marquee as point}
 				<li class="marquee__list-item">
-					<img src="/assets/star.svg" alt="star icon" />
+					<img src={star} alt="star icon" class="hidden! dark:block!" />
+					<img src={starLight} alt="star icon" class="block! dark:hidden!" />
 					<span>{point}</span>
 				</li>
 			{/each}
@@ -70,15 +75,17 @@
 
     .cta {
       @apply border-1 py-2 px-4 mb-4 rounded-xl w-[max-content] text-[14px] md:text-[20px];
-      @apply dark:text-foundation-blue-500;
+      @apply text-foundation-blue-600;
     }
 
     &__tc {
       @apply flex flex-col md:flex-row;
       &-title {
         @apply text-[28px] md:text-[54px] font-normal max-md:text-center;
+        @apply text-grey-300;
         @apply dark:text-white-800;
         .pop {
+          @apply text-grey-700;
           @apply dark:text-white-400;
         }
       }
@@ -91,17 +98,20 @@
     &__action {
       @apply flex flex-col md:flex-row mt-10 justify-between;
       * {
-        @apply text-white-400 text-[14px] md:text-[20px];
+        @apply text-[14px] md:text-[20px];
+        @apply text-grey-400;
+        @apply dark:text-white-400;
       }
 
       &-ctas {
-				@apply flex md:hidden mt-10 justify-between;
+        @apply flex md:hidden mt-10 justify-between;
       }
 
       &-callout {
         @apply max-md:hidden;
         &-text {
-          @apply font-medium text-[24px];
+          @apply font-medium text-[24px] text-grey-600;
+          @apply dark:text-white-600;
         }
 
         &-summary {
@@ -119,7 +129,9 @@
   }
 
   .marquee {
-    @apply px-0 py-4 md:py-10 w-[100vw] border-y-4 border-grey-600 overflow-hidden relative flex;
+    @apply px-0 py-4 md:py-10 w-[100vw] border-y-1  overflow-hidden relative flex;
+    @apply bg-white-600 border-grey-400;
+    @apply dark:bg-grey-900 dark:border-grey-600;
     &__track {
       @apply flex w-[max-content];
       animation: scroll-left 15s linear infinite;
@@ -128,14 +140,13 @@
     &__list {
       @apply flex w-full justify-evenly ;
       &-item {
-        @apply text-foundation-blue-500 uppercase text-[12px] md:text-[18px] mx-2 flex w-[max-content];
+        @apply text-foundation-blue-600 uppercase text-[12px] md:text-[18px] mx-2 flex w-[max-content];
         span {
           @apply my-auto mx-2;
         }
 
         img {
-          width: 8%;
-          height: auto;
+          @apply w-[8%] h-[auto];
         }
       }
     }

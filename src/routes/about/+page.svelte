@@ -84,8 +84,9 @@
     }
 
     &__card {
-      @apply border-solid border-1 border-white-400 bg-white-400 rounded-lg p-3 md:p-8 mr-4 mt-8 shadow-[inset_-2px_-2px_5px_0px] dark:shadow-shadow-200;
-      @apply dark:border-dark-350 dark:bg-dark-450 dark:shadow-[inset_-2px_-2px_5px_0px] dark:shadow-shadow-300;
+      @apply border-solid border-1 border-white-400 bg-white-400 rounded-lg p-3 md:p-8 mr-4 mt-8 shadow-[inset_-2px_-2px_5px_0px];
+      @apply shadow-shadow-200;
+      @apply dark:border-dark-350 dark:bg-dark-450 dark:shadow-shadow-300;
 
       &-value {
         @apply text-dark-200 text-[24px] md:text-large font-semibold;
@@ -117,6 +118,7 @@
 
       &-item {
         @apply border-solid border-0 md:border-t-2;
+				@apply border-grey-100;
         @apply dark:border-dark-250;
 
         &:hover {
@@ -140,7 +142,8 @@
           &-text {
             @apply py-4 px-0;
             p {
-              @apply text-[12px] md:text-sm uppercase;
+              @apply text-[14px] md:text-sm uppercase;
+							@apply text-grey-300;
               @apply dark:text-white-700;
             }
 
@@ -173,11 +176,14 @@
   }
 
   .experience {
-		@apply dark:bg-grey-900;
-	}
+    @apply bg-white-300;
+    @apply dark:bg-grey-900;
+  }
 
   .publications {
-    @apply dark:bg-grey-700 w-[97%] mx-auto rounded-[40px] mb-10;
+    @apply w-[97%] mx-auto rounded-[40px] mb-10;
+		@apply bg-white-100 mt-[2%];
+    @apply dark:mt-0 dark:bg-grey-700;
 
     &__list-item {
       @apply max-md:border-t-1;

@@ -1,8 +1,12 @@
 <script lang="ts">
 	import content from './content';
 	import leftArrow from '$assets/images/leftArrow.svg';
+	import leftArrowLight from '$assets/images/leftArrowLight.svg';
 	import rightArrow from '$assets/images/rightArrow.svg';
+	import rightArrowLight from '$assets/images/rightArrowLight.svg';
 	import arrowUp from '$assets/images/arrowUp.svg';
+	import arrowUpLight from '$assets/images/arrowUpLight.svg';
+	import { theme } from '$lib/theme.svelte.js';
 
 	function slideOnX(step) {
 		const element = document.querySelector('.projects__list');
@@ -39,10 +43,10 @@
 		<h3 class="projects__controls--subtitle">{content.subtitle}</h3>
 		<div class="projects__controls--actions">
 			<button class="projects__controls--actions-left" onclick={left}>
-				<img src={leftArrow} alt="left slider arrow" />
+				<img src={theme.isDark() ? leftArrow : leftArrowLight} alt="left slider arrow" />
 			</button>
 			<button class="projects__controls--actions-right" onclick={right}>
-				<img src={rightArrow} alt="right slider arrow" />
+				<img src={theme.isDark() ? rightArrow : rightArrowLight} alt="right slider arrow" />
 			</button>
 		</div>
 	</div>
@@ -55,7 +59,8 @@
 					<div class="projects__list-item-content-header">
 						<a class="projects__list-item-link" href={url} target="_blank">
 							View Project
-							<img src={arrowUp} alt="open link" />
+							<img src={arrowUp} alt="open link" class="hidden! dark:inline!"/>
+							<img src={arrowUpLight} alt="open link" class="inline! dark:hidden!"/>
 						</a>
 					</div>
 
@@ -91,10 +96,15 @@
       @apply flex justify-between pb-5 border-b-1 border-b-grey-500;
 
       &--actions {
-        @apply dark:bg-grey-700 p-1 my-auto h-[fit-content] flex justify-between border-1 border-grey-500 rounded-full;
-        &-left, &-right {
-          @apply border-1 border-grey-450 py-[15px] px-[16px] mx-[4%] rounded-full cursor-pointer;
-          @apply dark:bg-grey-900;
+        @apply p-1 my-auto h-[fit-content] flex justify-between border-1  rounded-full;
+        @apply bg-white-400 border-white-600;
+        @apply dark:bg-grey-900 dark:border-grey-450;
+
+
+				&-left, &-right {
+          @apply border-1 py-[15px] px-[16px] mx-[4%] rounded-full cursor-pointer;
+          @apply bg-white-600 border-grey-300;
+          @apply dark:bg-grey-700 dark:border-grey-500;
 
           img {
             @apply min-w-[3px];
@@ -110,6 +120,8 @@
 
     &__list {
       @apply flex mt-10 relative w-[fit-content];
+			@apply text-white-500;
+			@apply dark:text-grey-500;
       transition: left 0.3s ease;
 
       &-item {
@@ -119,8 +131,9 @@
         }
 
         &-content {
-          @apply py-[8%] relative w-[inherit] h-[inherit] flex justify-between flex-col;
-          @apply dark:bg-light-600/50 backdrop-blur-sm;
+          @apply py-[8%] relative w-[inherit] h-[inherit] flex justify-between flex-col backdrop-blur-sm;
+					@apply bg-grey-600/50;
+          @apply dark:bg-light-600/50 ;
           &-header {
             @apply text-right m-4 leading-[105%];
           }

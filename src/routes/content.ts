@@ -1,8 +1,10 @@
+
+
 export default {
 	hero: {
 		ctas: [
-			{title: 'View My Resume', url: '#'},
-			{title: 'Read My Writing', url: '#'}
+			{title: 'View My Resume', url: '/assets/My_Resume.pdf'},
+			{title: 'Read My Writing', url: '/musings'}
 		],
 		callout:{
 			text: 'Let’s Talk',
