@@ -12,7 +12,7 @@ export interface AnimateConfig {
 	rippleMaxRadius?: number;
 }
 
-export function animate(_config: AnimateConfig) {
+export function animate(_config: AnimateConfig, refresh = false) {
 
 	const canvas = document.querySelector(_config.selector) as HTMLCanvasElement;
 	const ctx = canvas.getContext('2d');

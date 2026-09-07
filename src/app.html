@@ -6,6 +6,21 @@
 		%sveltekit.head%
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!-- Inline script to prevent theme flash (FOUC) -->
+		<script>
+			(function () {
+				const key = 'll:dark-mode';
+				const stored = localStorage.getItem(key);
+				// Fallback: Default to dark (1) if not set, or check system preference
+				const isDark = stored !== null ? stored === '1' : true;
+
+				if (isDark) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+			})();
+		</script>
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: flex; flex-direction: column">%sveltekit.body%</div>

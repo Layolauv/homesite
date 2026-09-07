@@ -91,10 +91,14 @@
       @apply flex justify-between pb-5 border-b-1 border-b-grey-500;
 
       &--actions {
-        @apply dark:bg-grey-700 p-1 my-auto h-[fit-content] flex justify-between border-1 border-grey-500 rounded-full;
-        &-left, &-right {
-          @apply border-1 border-grey-450 py-[15px] px-[16px] mx-[4%] rounded-full cursor-pointer;
-          @apply dark:bg-grey-900;
+        @apply p-1 my-auto h-[fit-content] flex justify-between border-1  rounded-full;
+				@apply bg-white-600 border-grey-300;
+				@apply dark:bg-grey-700 dark:border-grey-500;
+
+				&-left, &-right {
+          @apply border-1 py-[15px] px-[16px] mx-[4%] rounded-full cursor-pointer;
+          @apply bg-white-400 border-white-600;
+          @apply dark:bg-grey-900 dark:border-grey-450;
 
           img {
             @apply min-w-[3px];
