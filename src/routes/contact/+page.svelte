@@ -1,6 +1,53 @@
 <script lang="ts">
 	import content from './content';
 	import circlesInSquare from '$assets/images/circlesInSquare.svg';
+	import Alert from 'sweetalert2';
+	import emailJs from '@emailjs/browser';
+
+	import {
+		PUBLIC_EMAILJS_SERVICE_KEY,
+		PUBLIC_CONTACT_TEMPLATE_KEY,
+		PUBLIC_EMAILJS_API_KEY,
+	} from '$env/static/public';
+
+	let isLoading = $state(false);
+
+	let formData = $state({
+		firstName: '',
+		lastName: '',
+		email: '',
+		phone: '',
+		message: ''
+	});
+
+	function submit() {
+		isLoading = true;
+		let sender = `${formData.firstName} ${formData.lastName}`;
+		let data = {
+			name: sender,
+			email: formData.email,
+			message: `You got a new inquiry from Layolauv.me
+        Name : ${sender},
+        Email: ${formData.email},
+        Phone: ${formData.phone}.
+				Message: ${formData.message}`
+		};
+
+		emailJs.send(PUBLIC_EMAILJS_SERVICE_KEY, PUBLIC_CONTACT_TEMPLATE_KEY, data, PUBLIC_EMAILJS_API_KEY)
+			.then(
+				() => {
+					isLoading = false;
+					Alert.fire({
+						title: 'Thank you for reaching out!',
+						text: 'I\'d reach back to you in the next few days!',
+						icon: 'success',
+					});
+				},
+				(error) => {
+					isLoading = false;
+				}
+			);
+	}
 
 </script>
 
@@ -19,7 +66,7 @@
 						 xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd"
 								d="M4.5 4.91738e-07L15.75 0C15.9489 0 16.1397 0.0790176 16.2803 0.21967C16.421 0.360322 16.5 0.551088 16.5 0.75V12C16.5 12.4142 16.1642 12.75 15.75 12.75C15.3358 12.75 15 12.4142 15 12V2.56066L1.28033 16.2803C0.987437 16.5732 0.512563 16.5732 0.21967 16.2803C-0.0732233 15.9874 -0.0732233 15.5126 0.21967 15.2197L13.9393 1.5L4.5 1.5C4.08579 1.5 3.75 1.16421 3.75 0.75C3.75 0.335787 4.08579 4.91738e-07 4.5 4.91738e-07Z"
-								 />
+					/>
 				</svg>
 			</a>
 		</div>
@@ -47,33 +94,36 @@
 				<h4 class="contact__cta-heading">Get In Touch</h4>
 			</div>
 		</div>
-		<form class="contact__form">
+		<form class="contact__form" on:submit|preventDefault={submit}>
 			<div class="form-row">
 				<div class="form-field">
 					<label for="first_name">First Name</label>
-					<input type="text" name="first_name" id="first_name" placeholder="Enter First Name" required>
+					<input type="text" name="first_name" id="first_name" placeholder="Enter First Name"
+								 bind:value={formData.firstName} required>
 				</div>
 				<div class="form-field">
 					<label for="last_name">Last Name</label>
-					<input type="text" name="last_name" id="last_name" placeholder="Enter Last Name" required>
+					<input type="text" name="last_name" id="last_name" placeholder="Enter Last Name"
+								 bind:value={formData.lastName} required>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-field">
 					<label for="email">Email</label>
-					<input type="text" name="email" id="email" placeholder="Enter your Email" required>
+					<input type="text" name="email" id="email" placeholder="Enter your Email" bind:value={formData.email}
+								 required>
 				</div>
 				<div class="form-field">
 					<label for="phone">Phone Number</label>
-					<input type="text" name="phone" id="phone" placeholder="+xx xxx xxx" required>
+					<input type="text" name="phone" id="phone" placeholder="+xx xxx xxx" bind:value={formData.phone} required>
 				</div>
 			</div>
 			<div class="form-field">
 				<label for="message">Message</label>
 				<textarea rows="5" maxlength="800" class="form-control" name="message" id="message"
-									placeholder="Enter your Message"></textarea>
+									placeholder="Enter your Message" bind:value={formData.message}></textarea>
 			</div>
-			<input type="submit" value="Send">
+			<input type="submit" value="Send" disabled={isLoading}>
 		</form>
 	</div>
 </section>
@@ -84,6 +134,27 @@
     @apply font-jakarta;
   }
 
+  div:where(.swal2-container) {
+    div:where(.swal2-popup) {
+      @apply bg-white-550;
+      @apply dark:bg-dark-500;
+    }
+
+    h2:where(.swal2-title) {
+      @apply text-dark-200;
+      @apply dark:text-white-500;
+    }
+
+    div:where(.swal2-html-container) {
+      @apply text-grey-300;
+      @apply dark:text-white-400;
+    }
+
+    button:where(.swal2-confirm) {
+      @apply bg-foundation-blue-600 text-white-400;
+      @apply dark:bg-foundation-blue-400 dark:text-grey-700;
+    }
+  }
   section {
     @apply dark:bg-dark-500;
   }
@@ -215,9 +286,14 @@
       }
 
       input[type="submit"] {
-        @apply w-full md:w-[fit-content] max-md:text-[14px] font-medium py-2 md:py-5 md:px-10 rounded-sm;
+        @apply w-full md:w-[fit-content] max-md:text-[14px] font-medium py-2 md:py-5 md:px-10 rounded-sm cursor-pointer;
         @apply bg-foundation-blue-600 text-white-400;
         @apply dark:bg-foundation-blue-400 dark:text-grey-700;
+
+				&:disabled {
+          @apply bg-foundation-blue-100 cursor-not-allowed;
+          @apply dark:bg-blue-900 ;
+				}
       }
     }
   }

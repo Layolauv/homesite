@@ -8,7 +8,7 @@ export default {
 		],
 		callout:{
 			text: 'Let’s Talk',
-			email: 'iam@layolauv.com',
+			email: 'iam@layolauv.me',
 			summary: '9+ years of experience with JavaScript, Typescript, modern frontend and backend frameworks.'
 		}
 	},
