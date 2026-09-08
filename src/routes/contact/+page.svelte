@@ -9,7 +9,6 @@
 		PUBLIC_CONTACT_TEMPLATE_KEY,
 		PUBLIC_EMAILJS_API_KEY,
 	} from '$env/static/public';
-	import { theme } from '$lib/theme.svelte';
 
 	let isLoading = $state(false);
 
@@ -22,13 +21,6 @@
 	});
 
 	function submit() {
-
-		Alert.fire({
-			title: 'Thank you for reaching out!',
-			text: 'I\'d reach back to you in the next few days!',
-			icon: 'success'
-		});
-		return;
 		isLoading = true;
 		let sender = `${formData.firstName} ${formData.lastName}`;
 		let data = {
@@ -49,9 +41,6 @@
 						title: 'Thank you for reaching out!',
 						text: 'I\'d reach back to you in the next few days!',
 						icon: 'success',
-						customClass: {
-							container: theme.isDark() ? 'alert-dark': 'alert',
-						},
 					});
 				},
 				(error) => {
@@ -145,9 +134,26 @@
     @apply font-jakarta;
   }
 
-  div:where(.swal2-container) div:where(.swal2-popup) {
-		@apply bg-white-550;
-    @apply dark:bg-dark-500;
+  div:where(.swal2-container) {
+    div:where(.swal2-popup) {
+      @apply bg-white-550;
+      @apply dark:bg-dark-500;
+    }
+
+    h2:where(.swal2-title) {
+      @apply text-dark-200;
+      @apply dark:text-white-500;
+    }
+
+    div:where(.swal2-html-container) {
+      @apply text-grey-300;
+      @apply dark:text-white-400;
+    }
+
+    button:where(.swal2-confirm) {
+      @apply bg-foundation-blue-600 text-white-400;
+      @apply dark:bg-foundation-blue-400 dark:text-grey-700;
+    }
   }
   section {
     @apply dark:bg-dark-500;
