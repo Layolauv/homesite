@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.scss';
-	import favicon from '$assets/images/favicon.svg';
+	import favicon from '$assets/images/favico.ico';
 	import dropdown from '$assets/images/dropdown.svg';
 	import dropdownLight from '$assets/images/dropdownLight.svg';
 	import sunlight from '$assets/images/sunlight.svg';
@@ -57,7 +57,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" type="image/x-icon" href={favicon} />
 </svelte:head>
 
 <section class="navigation__wrapper">
