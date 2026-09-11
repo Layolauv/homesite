@@ -11,7 +11,7 @@
 	import letsTalkLight from '$assets/images/lets-talkLight.png';
 	import { afterNavigate, goto } from '$app/navigation';
 	import { base } from '$app/paths';
-	import { theme } from '$lib/theme.svelte.ts';
+	import { theme } from '$lib/theme.svelte';
 
 	let { children } = $props();
 	let pathName = $state('');

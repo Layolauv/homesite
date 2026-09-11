@@ -2,9 +2,9 @@
 	import { onMount } from 'svelte';
 	import { animate } from '$lib/components/Backdraw';
 	import { theme } from '$lib/theme.svelte';
-	const toggleAnimate = (val) => {
+	const toggleAnimate = (val: number) => {
 		let bgColor, gridColor;
-		switch (parseInt(val, 10)) {
+		switch (val) {
 			case 1:
 				bgColor = '#151515';
 				gridColor = '#111111';
@@ -26,7 +26,9 @@
 
 	onMount(() => {
 		toggleAnimate(theme.mode);
-		document.addEventListener('onModeChange', ({ detail }) => toggleAnimate(detail));
+		document.addEventListener('onModeChange', (event: Event) => {
+			toggleAnimate((event as CustomEvent<number>).detail);
+		});
 	});
 
 </script>
