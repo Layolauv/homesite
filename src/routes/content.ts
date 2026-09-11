@@ -1,10 +1,10 @@
-
+import { base } from '$app/paths';
 
 export default {
 	hero: {
 		ctas: [
-			{title: 'View My Resume', url: '/assets/My_Resume.pdf'},
-			{title: 'Read My Writing', url: '/musings'}
+			{title: 'View My Resume', url: `${base}/assets/My_Resume.pdf`},
+			{title: 'Read My Writing', url: `${base}/musings`}
 		],
 		callout:{
 			text: 'Let’s Talk',

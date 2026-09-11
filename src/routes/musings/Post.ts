@@ -1,3 +1,5 @@
+import { base } from '$app/paths';
+
 export interface Post {
 	slug: string;
 	content: string;
@@ -26,6 +28,7 @@ async function loadPosts(): Promise<void> {
 		postsBySlug[slug] = {
 			slug,
 			...modules.metadata,
+			img: `${base}${modules.metadata.img}`,
 			content: modules.default
 		};
 	});

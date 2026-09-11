@@ -10,6 +10,7 @@
 	import letsTalk from '$assets/images/lets-talk.png';
 	import letsTalkLight from '$assets/images/lets-talkLight.png';
 	import { afterNavigate, goto } from '$app/navigation';
+	import { base } from '$app/paths';
 	import { theme } from '$lib/theme.svelte.ts';
 
 	let { children } = $props();
@@ -27,19 +28,19 @@
 
 	const currentYear = (new Date()).getFullYear();
 	let links = {
-		'home': '/',
-		'About Me': '/about',
-		'Projects': '/projects',
-		'Musings': '/musings'
+		'home': `${base}/`,
+		'About Me': `${base}/about`,
+		'Projects': `${base}/projects`,
+		'Musings': `${base}/musings`
 	};
 	let mobileLinks = {
-		'About Me': '/about',
-		'Projects': '/projects',
-		'Musings': '/musings',
-		'Contact Me': '/contact'
+		'About Me': `${base}/about`,
+		'Projects': `${base}/projects`,
+		'Musings': `${base}/musings`,
+		'Contact Me': `${base}/contact`
 	};
 
-	let contactUrl = '/contact';
+	let contactUrl = `${base}/contact`;
 
 	let footerLinks = {
 		'Email': 'mailto:iam@layolauv.me',
@@ -61,13 +62,13 @@
 
 <section class="navigation__wrapper">
 	<div class="navigation__block navigation__block--desktop">
-		<img src={logoPry} alt="site logo" class="navigation__logo" onclick={() => goto('/')} />
+		<img src={logoPry} alt="site logo" class="navigation__logo" onclick={() => goto(`${base}/`)} />
 		<nav class="navigation__links">
 			{#each Object.entries(links) as [ title, url ]}
 				<a href={url} class="navigation__link" class:active={isActiveUrl(url)}>{title}</a>
 			{/each}
 		</nav>
-		<a class="navigation__link navigation__link--contact btn" href="/contact">Contact Me</a>
+		<a class="navigation__link navigation__link--contact btn" href="{base}/contact">Contact Me</a>
 		<button class="navigation__mode" aria-label="mode" onclick={() => theme.toggle()}>
 			<img src={sunlight} alt="toggle light or dark mode" class="hidden! dark:block!" />
 			<img src={sunlightLight} alt="toggle light or dark mode" class="block! dark:hidden!" />
@@ -76,7 +77,7 @@
 
 	<div class="navigation__block navigation__block--mobile">
 		<div class="navigation__block-bar">
-			<img src={logoMobilePry} alt="site logo" class="navigation__logo" onclick={() => goto('/')} />
+			<img src={logoMobilePry} alt="site logo" class="navigation__logo" onclick={() => goto(`${base}/`)} />
 
 			<button class="navigation__action navigation__action--dropdown" onclick={toggleExpansion}>
 				<img src={dropdown} alt="show mobile dropdown" class="hidden! dark:block!" />

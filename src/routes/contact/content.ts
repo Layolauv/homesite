@@ -1,3 +1,5 @@
+import { base } from '$app/paths';
+
 export default {
 	info: {
 		title: 'Contact Me',
@@ -9,13 +11,13 @@ export default {
 			title: 'Connect with me',
 			socials: [
 				{
-					img: '/assets/x-logo.svg',
-					img2: '/assets/x-logo-2.svg',
+					img: `${base}/assets/x-logo.svg`,
+					img2: `${base}/assets/x-logo-2.svg`,
 					url: 'https://x.com/layolauv'
 				},
 				{
-					img: '/assets/linkedin-logo.svg',
-					img2: '/assets/linkedin-logo-2.svg',
+					img: `${base}/assets/linkedin-logo.svg`,
+					img2: `${base}/assets/linkedin-logo-2.svg`,
 					url: 'https://www.linkedin.com/in/layo-folaranmi'
 				},
 			]
