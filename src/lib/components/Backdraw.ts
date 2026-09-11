@@ -15,7 +15,8 @@ export interface AnimateConfig {
 export function animate(_config: AnimateConfig, refresh = false) {
 
 	const canvas = document.querySelector(_config.selector) as HTMLCanvasElement;
-	const ctx = canvas.getContext('2d');
+	const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+	if (!ctx) return;
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 
@@ -35,8 +36,8 @@ export function animate(_config: AnimateConfig, refresh = false) {
 
 // Grid tracking system
 	const occupiedLines = {
-		horizontal: new Set(),
-		vertical: new Set()
+		horizontal: new Set<number>(),
+		vertical: new Set<number>()
 	};
 
 // For random hacking characters
@@ -67,6 +68,14 @@ export function animate(_config: AnimateConfig, refresh = false) {
 	}
 
 	class Particle {
+		x = 0;
+		y = 0;
+		color = '';
+		speed = 0;
+		direction: 'horizontal' | 'vertical' = 'horizontal';
+		active = false;
+		trail: { x: number; y: number }[] = [];
+
 		constructor() {
 			this.color = config.particleColors[Math.floor(Math.random() * config.particleColors.length)];
 			this.speed = Math.random() * (config.particleSpeedMax - config.particleSpeedMin) + config.particleSpeedMin;
@@ -157,13 +166,19 @@ export function animate(_config: AnimateConfig, refresh = false) {
 		}
 	}
 
-	const particles = Array(config.particleCount).fill().map(() => new Particle());
+	const particles = Array.from({ length: config.particleCount }, () => new Particle());
 
 // Ripple effect handler
-	let ripples = [];
+	let ripples: Ripple[] = [];
 
 	class Ripple {
-		constructor(x, y) {
+		x: number;
+		y: number;
+		radius: number;
+		maxRadius: number;
+		startTime: number;
+
+		constructor(x: number, y: number) {
 			this.x = x;
 			this.y = y;
 			this.radius = 0;

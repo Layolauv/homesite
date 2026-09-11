@@ -1,17 +1,9 @@
 <script lang="ts">
 	import './page.scss';
-	import { page } from '$app/state';
-	import { onMount } from 'svelte';
-	import { getPostBySlug } from '../Post';
-	import { error } from '@sveltejs/kit';
+	import { base } from '$app/paths';
 
-	let post = $state({});
-	onMount(async () => {
-		post = await getPostBySlug(page.params.slug);
-		if (!post) {
-			error(404, 'Page Nonexistent');
-		}
-	});
+	let { data } = $props();
+	let post = data.post;
 </script>
 
 <svelte:head>
@@ -19,7 +11,7 @@
 </svelte:head>
 
 <section class="hero">
-	<a class="hero__link" href="/musings">&lt; Back to Musings</a>
+	<a class="hero__link" href="{base}/musings">&lt; Back to Musings</a>
 </section>
 
 <h1 class="musing__title">{post?.title}</h1>

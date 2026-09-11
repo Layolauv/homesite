@@ -8,7 +8,7 @@
 	import arrowUpLight from '$assets/images/arrowUpLight.svg';
 	import { theme } from '$lib/theme.svelte.js';
 
-	function slideOnX(step) {
+	function slideOnX(step: number) {
 		const element = document.querySelector('.projects__list');
 		if (!(element instanceof HTMLElement) || !element.offsetParent) return;
 
