@@ -223,7 +223,7 @@
     }
 
     &__logo {
-      @apply w-[11%] min-w-[100px] max-md:max-h-[30%] h-[fit-content]  m-auto cursor-pointer;
+      @apply w-[11%] min-w-[100px] md:h-[fit-content]  m-auto cursor-pointer;
       @apply border-grey-300;
       @apply dark:border-dark-400;
     }
