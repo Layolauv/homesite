@@ -7,6 +7,7 @@
 	import arrowUp from '$assets/images/arrowUp.svg';
 	import arrowUpLight from '$assets/images/arrowUpLight.svg';
 	import { theme } from '$lib/theme.svelte.js';
+	import { swipe, type SwipeCustomEvent } from 'svelte-gestures';
 
 	function slideOnX(step: number) {
 		const element = document.querySelector('.projects__list');
@@ -21,7 +22,7 @@
 
 		const right = element.offsetParent.clientWidth - (currentLeft + element.offsetWidth);
 
-		if (right >=0) {
+		if (right >= 0) {
 			element.style.right = '0px';
 			return;
 		}
@@ -31,6 +32,18 @@
 
 	const right = () => slideOnX(150);
 	const left = () => slideOnX(-150);
+
+	function handleSwipe(e: SwipeCustomEvent) {
+		console.log(e, e.detail);
+		switch (e.detail.direction) {
+			case 'left':
+				right();
+				break;
+			case 'right':
+				left();
+				break;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -42,16 +55,18 @@
 	<div class="projects__controls">
 		<h3 class="projects__controls--subtitle">{content.subtitle}</h3>
 		<div class="projects__controls--actions">
-			<button class="projects__controls--actions-left" onclick={left}>
+			<button class="projects__controls--actions-left" onclick={right}>
 				<img src={theme.isDark() ? leftArrow : leftArrowLight} alt="left slider arrow" />
 			</button>
-			<button class="projects__controls--actions-right" onclick={right}>
+			<button class="projects__controls--actions-right" onclick={left}>
 				<img src={theme.isDark() ? rightArrow : rightArrowLight} alt="right slider arrow" />
 			</button>
 		</div>
 	</div>
 
-	<div class="projects__list">
+	<div class="projects__list" use:swipe={{ timeframe: 300, minSwipeDistance: 100 }}}
+			 onswipe={handleSwipe}
+	>
 		{#each content.projects as { title, url, img, tags }}
 			<div class="projects__list-item">
 				<img src={img} alt={title} class="projects__list-item-bg" />
@@ -59,8 +74,8 @@
 					<div class="projects__list-item-content-header">
 						<a class="projects__list-item-link" href={url} target="_blank">
 							View Project
-							<img src={arrowUp} alt="open link" class="hidden! dark:inline!"/>
-							<img src={arrowUpLight} alt="open link" class="inline! dark:hidden!"/>
+							<img src={arrowUp} alt="open link" class="hidden! dark:inline!" />
+							<img src={arrowUpLight} alt="open link" class="inline! dark:hidden!" />
 						</a>
 					</div>
 
@@ -101,7 +116,7 @@
         @apply dark:bg-grey-900 dark:border-grey-450;
 
 
-				&-left, &-right {
+        &-left, &-right {
           @apply border-1 py-[15px] px-[16px] mx-[4%] rounded-full cursor-pointer;
           @apply bg-white-600 border-grey-300;
           @apply dark:bg-grey-700 dark:border-grey-500;
@@ -120,8 +135,8 @@
 
     &__list {
       @apply flex mt-10 relative w-[fit-content];
-			@apply text-white-500;
-			@apply dark:text-grey-500;
+      @apply text-white-500;
+      @apply dark:text-grey-500;
       transition: left 0.3s ease;
 
       &-item {
@@ -132,7 +147,7 @@
 
         &-content {
           @apply py-[8%] relative w-[inherit] h-[inherit] flex justify-between flex-col backdrop-blur-sm;
-					@apply bg-grey-600/50;
+          @apply bg-grey-600/50;
           @apply dark:bg-light-600/50 ;
           &-header {
             @apply text-right m-4 leading-[105%];
