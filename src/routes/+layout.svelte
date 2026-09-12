@@ -58,7 +58,6 @@
 
 <svelte:head>
 	<link rel="icon" type="image/x-icon" href={favicon} />
-	<meta name="theme-color" content={theme.isDark() ? "#0E0E10" : "#FDFDFD" }/>
 </svelte:head>
 
 <section class="navigation__wrapper">

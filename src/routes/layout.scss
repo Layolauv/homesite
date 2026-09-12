@@ -1,11 +1,3 @@
 section.page > section {
   padding: 5%;
 }
-
-:global(html), :global(body) {
-  background: var(--color-white-450);
-
-  &.dark {
-    background: var(--color-dark-600);
-  }
-}
