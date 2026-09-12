@@ -139,7 +139,7 @@
 
   .navigation {
     &__wrapper {
-      @apply flex max-w-[100vw] overflow-hidden border-solid border-0 border-b-1;
+      @apply flex max-w-[100vw] border-r-0 overflow-hidden border-solid border-0 border-b-1;
       @apply bg-white-450 border-grey-300;
       @apply dark:border-dark-400 dark:bg-dark-600;
 
@@ -153,7 +153,7 @@
     }
 
     &__block {
-      @apply grow-3 hidden border-x-1 border-grey-300;
+      @apply grow-3 hidden border-x-1 border-r-0 border-grey-300;
       @apply dark:border-dark-400;
 
       &--desktop {

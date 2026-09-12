@@ -129,7 +129,7 @@
   }
 
   .marquee {
-    @apply px-0 py-4 md:py-10 w-[100vw] border-y-1  overflow-hidden relative flex;
+    @apply px-0 py-4 md:py-10 border-y-1  overflow-hidden relative flex;
     @apply bg-white-600 border-grey-400;
     @apply dark:bg-grey-900 dark:border-grey-600;
     &__track {
