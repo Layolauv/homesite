@@ -7,7 +7,7 @@
 	import arrowUp from '$assets/images/arrowUp.svg';
 	import arrowUpLight from '$assets/images/arrowUpLight.svg';
 	import { theme } from '$lib/theme.svelte.js';
-	import { swipe, type SwipeCustomEvent } from 'svelte-gestures';
+	import { useSwipe, type SwipeCustomEvent } from 'svelte-gestures';
 
 	function slideOnX(step: number) {
 		const element = document.querySelector('.projects__list');
@@ -64,8 +64,9 @@
 		</div>
 	</div>
 
-	<div class="projects__list" use:swipe={{ timeframe: 300, minSwipeDistance: 100 }}}
-			 onswipe={handleSwipe}
+	<div class="projects__list"
+			 {...useSwipe(handleSwipe, () => ({ timeframe: 300, minSwipeDistance: 100 }),)}
+
 	>
 		{#each content.projects as { title, url, img, tags }}
 			<div class="projects__list-item">
