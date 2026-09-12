@@ -34,13 +34,12 @@
 	const left = () => slideOnX(-150);
 
 	function handleSwipe(e: SwipeCustomEvent) {
-		console.log(e, e.detail);
 		switch (e.detail.direction) {
 			case 'left':
-				right();
+				left();
 				break;
 			case 'right':
-				left();
+				right();
 				break;
 		}
 	}
